@@ -1,0 +1,76 @@
+8
+
+dir
+240
+svn://localhost/Bugclipse/trunk/com.bugclipse.fogbugz.reports.engine/plugins/com.lowagie.itext_1.5.2.v20070626/about_files
+svn://localhost
+
+
+
+2007-12-16T10:21:08.031250Z
+232
+subhash
+
+
+svn:special svn:externals svn:needs-lock
+
+MPL-1.1.txt
+file
+
+
+
+
+2007-12-16T09:52:28.687500Z
+bfe1f75d606912a4111c90743d6c7325
+2007-12-16T10:21:08.031250Z
+232
+subhash
+
+NOTICE-xerces.txt
+file
+
+
+
+
+2007-12-16T09:52:28.718750Z
+c27a18ece5d4497163c5f8341b13af5b
+2007-12-16T10:21:08.031250Z
+232
+subhash
+
+NOTICE-commons-lang.txt
+file
+
+
+
+
+2007-12-16T09:52:28.703125Z
+261bcb8eefd78f1066d6041359e61106
+2007-12-16T10:21:08.031250Z
+232
+subhash
+
+bouncycastle_license.txt
+file
+
+
+
+
+2007-12-16T09:52:28.718750Z
+2060cbbf06ca2e1e7bbb16be79c98d28
+2007-12-16T10:21:08.031250Z
+232
+subhash
+
+LICENSE-asl-20.txt
+file
+
+
+
+
+2007-12-16T09:52:28.687500Z
+3b83ef96387f14655fc854ddc3c6bd57
+2007-12-16T10:21:08.031250Z
+232
+subhash
+

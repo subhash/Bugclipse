@@ -1,0 +1,40 @@
+8
+
+dir
+307
+svn://localhost/Bugclipse/trunk/com.bugclipse.fogbugz.core/.settings
+svn://localhost
+
+
+
+2007-07-23T16:12:47.031250Z
+35
+subhash
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+6df6c074-f71b-b44e-839d-296f1544cb4b
+
+org.eclipse.pde.core.prefs
+file
+
+
+
+
+2007-08-24T04:25:48.265625Z
+a79733ff7791d70eaf57d78eb44fd165
+2007-07-23T16:12:47.031250Z
+35
+subhash
+

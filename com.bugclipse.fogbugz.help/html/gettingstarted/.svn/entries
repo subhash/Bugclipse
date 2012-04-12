@@ -1,0 +1,140 @@
+8
+
+dir
+294
+svn://localhost/Bugclipse/trunk/com.bugclipse.fogbugz.help/html/gettingstarted
+svn://localhost
+
+
+
+2007-12-27T18:13:35.234375Z
+294
+subhash
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+6df6c074-f71b-b44e-839d-296f1544cb4b
+
+Rich Editor.html
+file
+
+
+
+
+2007-12-28T04:46:33.812500Z
+b12f7773d22758b42e480895f3996eaa
+2007-12-27T15:44:12.609375Z
+289
+subhash
+
+Working with the Task List.html
+file
+
+
+
+
+2007-12-27T15:22:12.875000Z
+014974753dcd35f04e6bc4da45bf167d
+2007-12-27T13:23:35.625000Z
+281
+subhash
+
+Creating New FogBugz Task Repository.html
+file
+
+
+
+
+2007-12-22T16:35:22.531250Z
+29e0922aa373f80565fdee558e9b91f8
+2007-12-20T21:34:17.184615Z
+267
+subhash
+
+CreatingNewQuery.gif
+file
+
+
+
+
+2007-12-22T16:35:22.562500Z
+558df9fce192a63ffe42a754c53bc261
+2007-12-20T21:34:17.184615Z
+267
+subhash
+has-props
+
+RichEditor.gif
+file
+
+
+
+
+2007-12-27T17:54:24.328125Z
+72d2bb4048fafa80aec937bb8f080864
+2007-12-27T18:13:35.234375Z
+294
+subhash
+has-props
+
+creatingNewRepo.gif
+file
+
+
+
+
+2007-12-22T16:35:22.609375Z
+4ce118899f6d862a35b5968c13d1c548
+2007-12-20T21:34:17.184615Z
+267
+subhash
+has-props
+
+TaskList.gif
+file
+
+
+
+
+2007-12-22T16:35:22.640625Z
+175c70a368ac93fd8759ddfd7a45c8e2
+2007-12-20T21:34:17.184615Z
+267
+subhash
+has-props
+
+Creating New FogBugz Query.html
+file
+
+
+
+
+2007-12-22T16:35:22.671875Z
+66d0daa042058a8714e6b5a1cd4795f3
+2007-12-20T21:34:17.184615Z
+267
+subhash
+
+index.html
+file
+
+
+
+
+2007-12-27T15:22:12.906250Z
+69a13d707e0088a19c4db7d886fa43dc
+2007-12-27T15:05:32.156250Z
+285
+subhash
+

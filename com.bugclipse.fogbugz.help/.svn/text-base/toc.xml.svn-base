@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?NLS TYPE="org.eclipse.help.toc"?>
+<toc label="Bugclipse User Guide" topic="html/index.html">
+<topic label="Getting Started" href="html/gettingstarted/index.html"><link toc="toc_gettingstarted.xml" />
+</topic>
+<topic href="html/advancedfeatures/index.html" label="Advanced Features">
+   <link toc="toc_advancedfeatures.xml"/>
+</topic>
+<topic label="Mylyn Concepts">
+   <link toc="toc_mylynconcepts.xml"/>
+</topic>
+<topic href="html/References.html" label="References"/>
+</toc>

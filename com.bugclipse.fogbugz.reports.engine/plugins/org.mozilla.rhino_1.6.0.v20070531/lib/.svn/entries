@@ -1,0 +1,29 @@
+8
+
+dir
+240
+svn://localhost/Bugclipse/trunk/com.bugclipse.fogbugz.reports.engine/plugins/org.mozilla.rhino_1.6.0.v20070531/lib
+svn://localhost
+
+
+
+2007-12-16T10:21:08.031250Z
+232
+subhash
+
+
+svn:special svn:externals svn:needs-lock
+
+js.jar
+file
+
+
+
+
+2007-12-16T09:52:32.515625Z
+7c22c7ad85a607c07186611e1621f19a
+2007-12-16T10:21:08.031250Z
+232
+subhash
+has-props
+

@@ -1,0 +1,71 @@
+8
+
+dir
+240
+svn://localhost/Bugclipse/trunk/com.bugclipse.fogbugz.reports.engine/plugins/org.apache.derby.core_10.1.2.1
+svn://localhost
+
+
+
+2007-12-16T10:21:08.031250Z
+232
+subhash
+
+
+svn:special svn:externals svn:needs-lock
+
+META-INF
+dir
+
+derby.jar
+file
+
+
+
+
+2007-12-16T09:52:30.250000Z
+447420519f4feadfff6dac3e6968f072
+2007-12-16T10:21:08.031250Z
+232
+subhash
+has-props
+
+asl-v20.txt
+file
+
+
+
+
+2007-12-16T09:52:30.171875Z
+3b83ef96387f14655fc854ddc3c6bd57
+2007-12-16T10:21:08.031250Z
+232
+subhash
+
+about_files
+dir
+
+plugin.xml
+file
+
+
+
+
+2007-12-16T09:52:30.250000Z
+588af5a471eb7b7095550d0948b0111e
+2007-12-16T10:21:08.031250Z
+232
+subhash
+
+about.html
+file
+
+
+
+
+2007-12-16T09:52:30.171875Z
+a70253be7660c8e107605854c6197af3
+2007-12-16T10:21:08.031250Z
+232
+subhash
+

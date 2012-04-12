@@ -1,0 +1,360 @@
+package com.bugclipse.fogbugz.core;
+
+import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Set;
+
+import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.mylyn.tasks.core.AbstractAttributeFactory;
+import org.eclipse.mylyn.tasks.core.AbstractTask;
+import org.eclipse.mylyn.tasks.core.AbstractTaskDataHandler;
+import org.eclipse.mylyn.tasks.core.RepositoryAttachment;
+import org.eclipse.mylyn.tasks.core.RepositoryTaskAttribute;
+import org.eclipse.mylyn.tasks.core.RepositoryTaskData;
+import org.eclipse.mylyn.tasks.core.TaskComment;
+import org.eclipse.mylyn.tasks.core.TaskRepository;
+import org.eclipse.mylyn.tasks.ui.TasksUiPlugin;
+
+import com.bugclipse.fogbugz.api.AttachmentContained;
+import com.bugclipse.fogbugz.api.Case;
+import com.bugclipse.fogbugz.api.EventContained;
+import com.bugclipse.fogbugz.api.client.FogBugzClient;
+import com.bugclipse.fogbugz.api.exception.FogBugzClientException;
+import com.bugclipse.fogbugz.api.exception.FogBugzStatus;
+import com.bugclipse.fogbugz.core.FogBugzAttributeFactory.FogBugzAttribute;
+
+public class FogBugzTaskDataHandler extends AbstractTaskDataHandler {
+
+	private AbstractAttributeFactory attributeFactory = new FogBugzAttributeFactory();
+
+	private FogBugzRepositoryConnector connector;
+
+	public FogBugzTaskDataHandler(FogBugzRepositoryConnector connector) {
+		this.connector = connector;
+	}
+
+	@Override
+	public RepositoryTaskData getTaskData(TaskRepository repository,
+			String taskId, IProgressMonitor monitor) throws CoreException {
+		try {
+			AbstractTask task = TasksUiPlugin.getTaskListManager()
+					.getTaskList().getTask(repository.getUrl(), taskId);
+			FogBugzClient client = connector.getClientManager().getClient(
+					repository);
+			// TODO add code to update cached details with the latest info from
+			// repository
+			Case fcase = client.getCase(taskId);
+			if (fcase != null) {
+				return createTaskData(repository, client, fcase, null);
+			}
+		} catch (FogBugzClientException e) {
+			throw new CoreException(FogBugzStatus.createClientErrorStatus(
+					repository, e));
+		}
+		return null;
+	}
+
+	public RepositoryTaskData createTaskData(TaskRepository repository,
+			FogBugzClient client, Case fcase, AbstractTask oldTask)
+			throws FogBugzClientException {
+		RepositoryTaskData data = new RepositoryTaskData(attributeFactory,
+				FogBugzCorePlugin.REPOSITORY_KIND, repository.getUrl(), fcase
+						.getIxBug()
+						+ "");
+		createDefaultAttributes(attributeFactory, data, fcase, client, true);
+		updateTaskData(repository, client, attributeFactory, data, fcase);
+		// addOperations(data, fcase, client, oldTaskData);
+		return data;
+	}
+
+	private void updateTaskData(TaskRepository repository,
+			FogBugzClient client, AbstractAttributeFactory factory,
+			RepositoryTaskData data, Case fcase) throws FogBugzClientException {
+		data.setAttributeValue(FogBugzAttribute.TITLE.getKey(), fcase
+				.getSTitle());
+		// data.setAttributeValue(FogBugzAttribute.DESCRIPTION.getKey(), fcase
+		// .getSLatestTextSummary());
+		data.setAttributeValue(FogBugzAttribute.STATUS.getKey(), fcase
+				.getSStatus());
+		data.setAttributeValue(FogBugzAttribute.ID.getKey(), fcase.getIxBug()
+				+ "");
+		data.setAttributeValue(FogBugzAttribute.DT_OPENED.getKey(),
+				new SimpleDateFormat().format(fcase.getDtOpened()));
+		data.setAttributeValue(FogBugzAttribute.DT_LAST_UPDATED.getKey(),
+				new SimpleDateFormat().format(fcase.getDtLastUpdated()));
+		data.setAttributeValue(FogBugzAttribute.RESOLUTION.getKey(), //
+				fcase.isFOpen() ? "" : fcase.getSStatus());
+		data.setAttributeValue(FogBugzAttribute.ASSIGNED_TO.getKey(), fcase
+				.getSPersonAssignedTo());
+		data.setAttributeValue(FogBugzAttribute.OPENED_BY.getKey(), "subhash");
+		data.setAttributeValue(FogBugzAttribute.PROJECT.getKey(), fcase
+				.getSProject());
+		data.setAttributeValue(FogBugzAttribute.PRIORITY.getKey(), fcase
+				.getIxPriority()
+				+ " - " + fcase.getSPriority());
+
+		data
+				.setAttributeValue(FogBugzAttribute.AREA.getKey(), fcase
+						.getSArea());
+		data.setAttributeValue(FogBugzAttribute.CATEGORY.getKey(), fcase
+				.getSCategory());
+		String fixfor = fcase.getSFixFor();
+		if (fixfor == null || fixfor.equals(""))
+			fixfor = client.getFixFors().get(FogBugzAttributeFactory.UNDECIDED)
+					.get(0);
+		data.setAttributeValue(FogBugzAttribute.FIXFOR.getKey(), fixfor);
+		data.setAttributeValue(FogBugzAttribute.COMPUTER.getKey(), fcase
+				.getSComputer());
+		data.setAttributeValue(FogBugzAttribute.CURRENT_ESTIMATE.getKey(),
+				fcase.getHrsCurrEst() + "");
+		if (fcase.getDtDue() != null)
+			data.setAttributeValue(FogBugzAttribute.DUE_DATE.getKey(), fcase
+					.getDtDue().toString());
+		if (fcase.getHrsCurrEst() != 0)
+			data.setAttributeValue(FogBugzAttribute.HRS_ELAPSED.getKey(), fcase
+					.getHrsElapsed()
+					+ "");
+		else
+			data.removeAttribute(FogBugzAttribute.HRS_ELAPSED.getKey());
+		if (fcase.getHrsOrigEst() != 0)
+			data.setAttributeValue(FogBugzAttribute.ORIGINAL_ESTIMATE.getKey(),
+					fcase.getHrsOrigEst() + "");
+		else
+			data.removeAttribute(FogBugzAttribute.ORIGINAL_ESTIMATE.getKey());
+
+		EventContained[] events = fcase.getEventsContained()
+				.getEventContained();
+		for (EventContained event : events) {
+			String creator = event.getSPerson();
+			String date = new SimpleDateFormat().format(event.getDt());
+			String eventDescription = event.getEvtDescription();
+			TaskComment taskComment = new TaskComment(attributeFactory, data
+					.getComments().size() + 1);
+			taskComment.setAttributeValue(
+					RepositoryTaskAttribute.COMMENT_AUTHOR, eventDescription);
+			taskComment.setAttributeValue(RepositoryTaskAttribute.COMMENT_DATE,
+					date);
+			taskComment.setAttributeValue(RepositoryTaskAttribute.COMMENT_TEXT,
+					event.getSChanges() + "\n" + event.getS());
+			data.addComment(taskComment);
+			AttachmentContained[] attachments = event
+					.getRgAttachmentsContained().getAttachmentContained();
+			for (int i = 0; i < attachments.length; i++) {
+				AttachmentContained attachment = attachments[i];
+				RepositoryAttachment taskAttachment = new RepositoryAttachment(
+						factory);
+				taskAttachment.setCreator(creator);
+				taskAttachment
+						.setRepositoryKind(FogBugzCorePlugin.REPOSITORY_KIND);
+				taskAttachment.setRepositoryUrl(repository.getUrl());
+				taskAttachment.setTaskId(data.getId());
+				taskAttachment.setAttributeValue(FogBugzAttribute.DESCRIPTION
+						.getKey(), attachment.getSFileName());
+				taskAttachment.setAttributeValue(
+						RepositoryTaskAttribute.ATTACHMENT_FILENAME, attachment
+								.getSFileName());
+				taskAttachment.setAttributeValue(
+						RepositoryTaskAttribute.USER_OWNER, creator);
+				if (date != null) {
+					taskAttachment.setAttributeValue(
+							RepositoryTaskAttribute.ATTACHMENT_DATE, date);
+				}
+				taskAttachment.setAttributeValue(
+						RepositoryTaskAttribute.ATTACHMENT_URL, repository
+								.getUrl()
+								+ "/" + attachment.getSURL());
+				taskAttachment.setAttributeValue(
+						RepositoryTaskAttribute.ATTACHMENT_ID, i + "");
+				data.addAttachment(taskAttachment);
+
+			}
+		}
+	}
+
+	public void createDefaultAttributes(AbstractAttributeFactory factory,
+			RepositoryTaskData data, Case fcase, FogBugzClient client,
+			boolean existingTask) throws FogBugzClientException {
+		if (existingTask) {
+			createAttribute(factory, data, FogBugzAttribute.STATUS);
+			createAttribute(factory, data, FogBugzAttribute.RESOLUTION);
+			createAttribute(factory, data, FogBugzAttribute.ORIGINAL_ESTIMATE);
+			createAttribute(factory, data, FogBugzAttribute.HRS_ELAPSED);
+
+		}
+		createAttribute(factory, data, FogBugzAttribute.CURRENT_ESTIMATE);
+		createAttribute(factory, data, FogBugzAttribute.DUE_DATE);
+		createAttribute(factory, data, FogBugzAttribute.PRIORITY, client
+				.getOptions(FogBugzAttribute.PRIORITY));
+		data.setAttributeValue(FogBugzAttribute.PRIORITY.getKey(), client
+				.getOptions(FogBugzAttribute.PRIORITY).get(2));
+		ArrayList<String> projects = client
+				.getOptions(FogBugzAttribute.PROJECT);
+
+		createAttribute(factory, data, FogBugzAttribute.PROJECT, projects);
+		createAttribute(factory, data, FogBugzAttribute.AREA);
+		HashMap<String, ArrayList<String>> areas = client.getAreas();
+		for (String project : projects) {
+			createSpecialAttribute(data, project
+					+ FogBugzAttributeFactory.filler
+					+ FogBugzAttribute.AREA.getKey(), project, areas
+					.get(project));
+		}
+		createAttribute(factory, data, FogBugzAttribute.FIXFOR);
+		HashMap<String, ArrayList<String>> fixFor = client.getFixFors();
+		for (String project : projects) {
+			ArrayList<String> fixForOptions = fixFor.get(project);
+			if (fixForOptions == null || fixForOptions.size() == 0)
+				fixForOptions = fixFor.get(FogBugzAttributeFactory.UNDECIDED);
+			createSpecialAttribute(data, project
+					+ FogBugzAttributeFactory.filler
+					+ FogBugzAttribute.FIXFOR.getKey(), project, fixFor
+					.get(project));
+		}
+		createAttribute(factory, data, FogBugzAttribute.CATEGORY, client
+				.getOptions(FogBugzAttribute.CATEGORY));
+		data.setAttributeValue(FogBugzAttribute.CATEGORY.getKey(), client
+				.getOptions(FogBugzAttribute.CATEGORY).get(0));
+		createAttribute(factory, data, FogBugzAttribute.COMPUTER);
+		createAttribute(factory, data, FogBugzAttribute.VERSION);
+		createAttribute(factory, data, FogBugzAttribute.ASSIGNED_TO, client
+				.getOptions(FogBugzAttribute.ASSIGNED_TO));
+		if (existingTask) {
+			createAttribute(factory, data, FogBugzAttribute.OPENED_BY);
+		}
+		createAttribute(factory, data, FogBugzAttribute.TITLE);
+		// createAttribute(factory, data, FogBugzAttribute.DESCRIPTION);
+		createAttribute(factory, data, FogBugzAttribute.DT_OPENED);
+		createAttribute(factory, data, FogBugzAttribute.DT_LAST_UPDATED);
+		createAttribute(factory, data, FogBugzAttribute.CC);
+		if (!existingTask) {
+			// createAttribute(factory, data, FogBugzAttribute.TITLE);
+			// createAttribute(factory, data, FogBugzAttribute.DESCRIPTION);
+			// createAttribute(factory, data, FogBugzAttribute.DT_OPENED);
+			// createAttribute(factory, data, FogBugzAttribute.DT_LAST_UPDATED);
+		}
+	}
+
+	private static RepositoryTaskAttribute createSpecialAttribute(
+			RepositoryTaskData data, String id, String name,
+			ArrayList<String> options) {
+		RepositoryTaskAttribute attribute = new RepositoryTaskAttribute(id,
+				name, true);
+		if (options != null)
+			for (String opt : options) {
+				attribute.addOption(opt, opt);
+			}
+		attribute.setReadOnly(true);
+		data.addAttribute(id, attribute);
+		return attribute;
+	}
+
+	private static RepositoryTaskAttribute createAttribute(
+			AbstractAttributeFactory factory, RepositoryTaskData data,
+			FogBugzAttribute attribute, ArrayList<String> values) {
+		RepositoryTaskAttribute attr = factory.createAttribute(attribute
+				.getKey());
+		if (values != null) {
+			for (String value : values) {
+				attr.addOption(value, value);
+			}
+		} else {
+			// attr.setHidden(true);
+			attr.setReadOnly(true);
+		}
+		data.addAttribute(attribute.getKey(), attr);
+		return attr;
+	}
+
+	private static RepositoryTaskAttribute createAttribute(
+			AbstractAttributeFactory factory, RepositoryTaskData data,
+			FogBugzAttribute attribute) {
+		RepositoryTaskAttribute attr = factory.createAttribute(attribute
+				.getKey());
+		data.addAttribute(attribute.getKey(), attr);
+		return attr;
+	}
+
+	@Override
+	public AbstractAttributeFactory getAttributeFactory(String repositoryUrl,
+			String repositoryKind, String taskKind) {
+		// we don't care about the repository information right now
+		return attributeFactory;
+	}
+
+	@Override
+	public AbstractAttributeFactory getAttributeFactory(
+			RepositoryTaskData taskData) {
+		return getAttributeFactory(taskData.getRepositoryUrl(), taskData
+				.getRepositoryKind(), taskData.getTaskKind());
+	}
+
+	@Override
+	public boolean initializeTaskData(TaskRepository repository,
+			RepositoryTaskData data, IProgressMonitor monitor)
+			throws CoreException {
+		try {
+			FogBugzClient client = connector.getClientManager().getClient(
+					repository);
+			createDefaultAttributes(attributeFactory, data, null, client, false);
+			return true;
+		} catch (FogBugzClientException e) {
+			throw new CoreException(FogBugzStatus.createClientErrorStatus(
+					repository, e));
+		}
+	}
+
+	@Override
+	public Set<String> getSubTaskIds(RepositoryTaskData arg0) {
+		return Collections.emptySet();
+	}
+
+	@Override
+	public String postTaskData(TaskRepository repository,
+			RepositoryTaskData taskData, IProgressMonitor monitor)
+			throws CoreException {
+		System.out.println("In post Task data");
+		HashMap<String, String> changedValues = new HashMap<String, String>();
+		try {
+			List<RepositoryTaskAttribute> attributes = taskData.getAttributes();
+			for (RepositoryTaskAttribute attribute : attributes) {
+				if (FogBugzAttributeFactory.isInternalAttribute(attribute
+						.getId())) {
+					// ignore
+				} else if (!attribute.isReadOnly()) {
+					changedValues.put(attribute.getId(), attribute.getValue());
+				}
+			}
+			// RepositoryOperation operation = data.getSelectedOperation();
+			// if (operation != null) {
+			// // handle operations
+			// }
+
+			FogBugzClient client = connector.getClientManager().getClient(
+					repository);
+			if (taskData.isNew()) {
+				// handle new task creation
+				// int id = client.createTicket(ticket);
+				return taskData.getId();
+			} else {
+<<<<<<< .mine
+				client.updateCase(taskData.getId(), changedValues, taskData
+						.getNewComment(), new File[0]);
+=======
+				client.updateCase(taskData.getId(), changedValues, taskData
+						.getNewComment());
+>>>>>>> .r128
+				return null;
+			}
+		} catch (FogBugzClientException e) {
+			throw new CoreException(FogBugzStatus.createClientErrorStatus(
+					repository, e));
+		}
+	}
+
+}

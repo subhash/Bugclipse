@@ -1,0 +1,40 @@
+8
+
+dir
+240
+svn://localhost/Bugclipse/trunk/com.bugclipse.fogbugz.reports.engine/plugins/org.apache.derby.core_10.1.2.1/about_files
+svn://localhost
+
+
+
+2007-12-16T10:21:08.031250Z
+232
+subhash
+
+
+svn:special svn:externals svn:needs-lock
+
+NOTICE
+file
+
+
+
+
+2007-12-16T09:52:30.265625Z
+a0aa8a863eb9170db80e9b5957a74ccb
+2007-12-16T10:21:08.031250Z
+232
+subhash
+
+LICENSE-2.0.txt
+file
+
+
+
+
+2007-12-16T09:52:30.265625Z
+3b83ef96387f14655fc854ddc3c6bd57
+2007-12-16T10:21:08.031250Z
+232
+subhash
+

@@ -1,0 +1,81 @@
+8
+
+dir
+313
+svn://localhost/Bugclipse/trunk/com.bugclipse.fogbugz.update/plugins
+svn://localhost
+
+
+
+2008-01-17T15:18:15.328125Z
+313
+subhash
+
+
+svn:special svn:externals svn:needs-lock
+
+com.bugclipse.fogbugz.ui_1.0.0.jar
+file
+
+
+
+
+2008-01-17T12:42:48.187500Z
+b985a0bd60888dfe467dc2902757637d
+2008-01-17T15:18:15.328125Z
+313
+subhash
+has-props
+
+com.bugclipse.fogbugz.reports_1.0.0.jar
+file
+
+
+
+
+2008-01-17T12:42:25.562500Z
+4a28814c9262392c6692a807ee74f1aa
+2008-01-17T15:18:15.328125Z
+313
+subhash
+has-props
+
+com.bugclipse.fogbugz.reports.engine_1.0.0.jar
+file
+
+
+
+
+2008-01-17T12:42:43.703125Z
+9afe8ca189f2773c141d4a437090f639
+2008-01-17T15:18:15.328125Z
+313
+subhash
+has-props
+
+com.bugclipse.fogbugz.core_1.0.0.jar
+file
+
+
+
+
+2008-01-17T12:42:34.359375Z
+22cd10ed3d839c17c9d1414f0dd92d49
+2008-01-17T15:18:15.328125Z
+313
+subhash
+has-props
+
+com.bugclipse.fogbugz.help_1.0.0.jar
+file
+
+
+
+
+2008-01-17T12:42:24.953125Z
+05385e45447c2610e2450d12ea027eb8
+2008-01-17T15:18:15.328125Z
+313
+subhash
+has-props
+

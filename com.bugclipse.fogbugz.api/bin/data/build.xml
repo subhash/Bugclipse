@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!-- ====================================================================== 
+     Aug 18, 2007 7:58:48 AM                                                        
+
+     Letssee    
+     let's see
+                   
+     Subhash                                                                
+     ====================================================================== -->
+<project name="Letssee" default="default">
+	<description>
+            let's see
+    </description>
+
+	<!-- ================================= 
+          target: default              
+         ================================= -->
+	<target name="default" depends="depends" description="--> let's see">
+		<taskdef name="castor-srcgen" classname="org.castor.anttask.CastorCodeGenTask" classpath="../lib/castor-1.1.2.1-anttasks.jar;../lib/castor-1.1.2.1-codegen.jar;../lib/castor-1.1.2.1-xml.jar;../lib/castor-1.1.2.1.jar;../lib/xercesImpl.jar" />
+		<castor-srcgen 
+			file="fogbugz-api.xsd" todir="../" 
+			package="letssee" types="j2" 
+			automaticConflictStrategy="xpath"/>
+	</target>
+
+	<!-- - - - - - - - - - - - - - - - - - 
+          target: depends                      
+         - - - - - - - - - - - - - - - - - -->
+	<target name="depends">
+	</target>
+
+</project>

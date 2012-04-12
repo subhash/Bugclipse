@@ -1,0 +1,40 @@
+8
+
+dir
+307
+svn://localhost/Bugclipse/trunk/com.bugclipse.fogbugz.core/src/com/bugclipse/fogbugz/api/launch
+svn://localhost
+
+
+
+2007-10-10T18:54:34.328125Z
+122
+subhash
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+6df6c074-f71b-b44e-839d-296f1544cb4b
+
+LauncherMain.java
+file
+
+
+
+
+2007-10-10T18:46:09.625000Z
+20aeaf4f1fd56e8bdceff0dda98b00e1
+2007-10-10T18:54:34.328125Z
+122
+subhash
+

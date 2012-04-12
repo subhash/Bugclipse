@@ -1,0 +1,838 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<report xmlns="http://www.eclipse.org/birt/2005/design" version="3.2.10" id="1">
+    <property name="createdBy">Eclipse BIRT Designer Version 2.2.1.r221_v20070924 Build &lt;2.2.0.v20070924-1550></property>
+    <property name="units">in</property>
+    <property name="comments">Copyright (c) 2007 &lt;&lt;Your Company Name here>></property>
+    <html-property name="description">Creates a blank report with no predefined content.</html-property>
+    <text-property name="displayName">Blank Report</text-property>
+    <property name="iconFile">/templates/blank_report.gif</property>
+    <data-sources>
+        <script-data-source name="TasksDataSource" id="111"/>
+    </data-sources>
+    <data-sets>
+        <script-data-set name="TasksDataSet" id="112">
+            <list-property name="resultSetHints">
+                <structure>
+                    <property name="position">1</property>
+                    <property name="name">id</property>
+                    <property name="dataType">any</property>
+                </structure>
+                <structure>
+                    <property name="position">2</property>
+                    <property name="name">title</property>
+                    <property name="dataType">any</property>
+                </structure>
+                <structure>
+                    <property name="position">3</property>
+                    <property name="name">desc</property>
+                </structure>
+                <structure>
+                    <property name="position">4</property>
+                    <property name="name">status</property>
+                </structure>
+                <structure>
+                    <property name="position">5</property>
+                    <property name="name">resolution</property>
+                </structure>
+                <structure>
+                    <property name="position">6</property>
+                    <property name="name">currEst</property>
+                </structure>
+                <structure>
+                    <property name="position">7</property>
+                    <property name="name">due</property>
+                </structure>
+                <structure>
+                    <property name="position">8</property>
+                    <property name="name">priority</property>
+                </structure>
+                <structure>
+                    <property name="position">9</property>
+                    <property name="name">project</property>
+                </structure>
+                <structure>
+                    <property name="position">10</property>
+                    <property name="name">area</property>
+                </structure>
+                <structure>
+                    <property name="position">11</property>
+                    <property name="name">fixFor</property>
+                </structure>
+                <structure>
+                    <property name="position">12</property>
+                    <property name="name">category</property>
+                </structure>
+                <structure>
+                    <property name="position">13</property>
+                    <property name="name">computer</property>
+                </structure>
+                <structure>
+                    <property name="position">14</property>
+                    <property name="name">version</property>
+                </structure>
+                <structure>
+                    <property name="position">15</property>
+                    <property name="name">assignedTo</property>
+                </structure>
+                <structure>
+                    <property name="position">16</property>
+                    <property name="name">openedBy</property>
+                </structure>
+                <structure>
+                    <property name="position">17</property>
+                    <property name="name">openedOn</property>
+                </structure>
+                <structure>
+                    <property name="position">18</property>
+                    <property name="name">lastUpdatedOn</property>
+                </structure>
+                <structure>
+                    <property name="position">19</property>
+                    <property name="name">cc</property>
+                </structure>
+            </list-property>
+            <list-property name="columnHints">
+                <structure>
+                    <property name="columnName">id</property>
+                </structure>
+                <structure>
+                    <property name="columnName">title</property>
+                </structure>
+                <structure>
+                    <property name="columnName">desc</property>
+                </structure>
+                <structure>
+                    <property name="columnName">status</property>
+                </structure>
+                <structure>
+                    <property name="columnName">resolution</property>
+                </structure>
+                <structure>
+                    <property name="columnName">currEst</property>
+                </structure>
+                <structure>
+                    <property name="columnName">due</property>
+                </structure>
+                <structure>
+                    <property name="columnName">priority</property>
+                </structure>
+                <structure>
+                    <property name="columnName">project</property>
+                </structure>
+                <structure>
+                    <property name="columnName">area</property>
+                </structure>
+                <structure>
+                    <property name="columnName">fixFor</property>
+                </structure>
+                <structure>
+                    <property name="columnName">category</property>
+                </structure>
+                <structure>
+                    <property name="columnName">computer</property>
+                </structure>
+                <structure>
+                    <property name="columnName">version</property>
+                </structure>
+                <structure>
+                    <property name="columnName">assignedTo</property>
+                </structure>
+                <structure>
+                    <property name="columnName">openedBy</property>
+                </structure>
+                <structure>
+                    <property name="columnName">openedOn</property>
+                </structure>
+                <structure>
+                    <property name="columnName">lastUpdatedOn</property>
+                </structure>
+                <structure>
+                    <property name="columnName">cc</property>
+                </structure>
+            </list-property>
+            <structure name="cachedMetaData">
+                <list-property name="resultSet">
+                    <structure>
+                        <property name="position">1</property>
+                        <property name="name">id</property>
+                        <property name="dataType">any</property>
+                    </structure>
+                    <structure>
+                        <property name="position">2</property>
+                        <property name="name">title</property>
+                        <property name="dataType">any</property>
+                    </structure>
+                    <structure>
+                        <property name="position">3</property>
+                        <property name="name">desc</property>
+                        <property name="dataType">any</property>
+                    </structure>
+                    <structure>
+                        <property name="position">4</property>
+                        <property name="name">status</property>
+                        <property name="dataType">any</property>
+                    </structure>
+                    <structure>
+                        <property name="position">5</property>
+                        <property name="name">resolution</property>
+                        <property name="dataType">any</property>
+                    </structure>
+                    <structure>
+                        <property name="position">6</property>
+                        <property name="name">currEst</property>
+                        <property name="dataType">any</property>
+                    </structure>
+                    <structure>
+                        <property name="position">7</property>
+                        <property name="name">due</property>
+                        <property name="dataType">any</property>
+                    </structure>
+                    <structure>
+                        <property name="position">8</property>
+                        <property name="name">priority</property>
+                        <property name="dataType">any</property>
+                    </structure>
+                    <structure>
+                        <property name="position">9</property>
+                        <property name="name">project</property>
+                        <property name="dataType">any</property>
+                    </structure>
+                    <structure>
+                        <property name="position">10</property>
+                        <property name="name">area</property>
+                        <property name="dataType">any</property>
+                    </structure>
+                    <structure>
+                        <property name="position">11</property>
+                        <property name="name">fixFor</property>
+                        <property name="dataType">any</property>
+                    </structure>
+                    <structure>
+                        <property name="position">12</property>
+                        <property name="name">category</property>
+                        <property name="dataType">any</property>
+                    </structure>
+                    <structure>
+                        <property name="position">13</property>
+                        <property name="name">computer</property>
+                        <property name="dataType">any</property>
+                    </structure>
+                    <structure>
+                        <property name="position">14</property>
+                        <property name="name">version</property>
+                        <property name="dataType">any</property>
+                    </structure>
+                    <structure>
+                        <property name="position">15</property>
+                        <property name="name">assignedTo</property>
+                        <property name="dataType">any</property>
+                    </structure>
+                    <structure>
+                        <property name="position">16</property>
+                        <property name="name">openedBy</property>
+                        <property name="dataType">any</property>
+                    </structure>
+                    <structure>
+                        <property name="position">17</property>
+                        <property name="name">openedOn</property>
+                        <property name="dataType">any</property>
+                    </structure>
+                    <structure>
+                        <property name="position">18</property>
+                        <property name="name">lastUpdatedOn</property>
+                        <property name="dataType">any</property>
+                    </structure>
+                    <structure>
+                        <property name="position">19</property>
+                        <property name="name">cc</property>
+                        <property name="dataType">any</property>
+                    </structure>
+                </list-property>
+            </structure>
+            <property name="dataSource">TasksDataSource</property>
+            <method name="open"><![CDATA[count = 0;]]></method>
+            <method name="fetch"><![CDATA[if(count >= Tasks.length) return false;
+row["id"] = Tasks[count].getAttribute("ID").getValue();
+row["title"] = Tasks[count].getAttribute("sTitle").getValue();
+row["desc"] = Tasks[count].getDescription();
+row["status"] = Tasks[count].getAttribute("sStatus").getValue();
+row["currEst"] = Tasks[count].getAttribute("hrsCurrEst").getValue();
+row["due"] = Tasks[count].getAttribute("dtDue").getValue();
+row["priority"] = Tasks[count].getAttribute("ixPriority").getValue();
+row["project"] = Tasks[count].getAttribute("sProject").getValue();
+row["area"] = Tasks[count].getAttribute("sArea").getValue();
+row["fixFor"] = Tasks[count].getAttribute("sFixFor").getValue();
+row["category"] = Tasks[count].getAttribute("sCategory").getValue();
+row["computer"] = Tasks[count].getAttribute("sComputer").getValue();
+row["version"] = Tasks[count].getAttribute("sVersion").getValue();
+row["assignedTo"] = Tasks[count].getAttribute("sPersonAssignedTo").getValue();
+row["openedBy"] = Tasks[count].getAttribute("opened_by").getValue();
+row["openedOn"] = Tasks[count].getAttribute("dtOpened").getValue();
+row["lastUpdatedOn"] = Tasks[count].getAttribute("dtLastUpdated").getValue();
+row["cc"] = Tasks[count].getAttribute("cc").getValue();
+count++;
+return true;]]></method>
+        </script-data-set>
+    </data-sets>
+    <styles>
+        <style name="crosstab-cell" id="4">
+            <property name="borderBottomColor">#CCCCCC</property>
+            <property name="borderBottomStyle">solid</property>
+            <property name="borderBottomWidth">1pt</property>
+            <property name="borderLeftColor">#CCCCCC</property>
+            <property name="borderLeftStyle">solid</property>
+            <property name="borderLeftWidth">1pt</property>
+            <property name="borderRightColor">#CCCCCC</property>
+            <property name="borderRightStyle">solid</property>
+            <property name="borderRightWidth">1pt</property>
+            <property name="borderTopColor">#CCCCCC</property>
+            <property name="borderTopStyle">solid</property>
+            <property name="borderTopWidth">1pt</property>
+        </style>
+        <style name="crosstab" id="5">
+            <property name="borderBottomColor">#CCCCCC</property>
+            <property name="borderBottomStyle">solid</property>
+            <property name="borderBottomWidth">1pt</property>
+            <property name="borderLeftColor">#CCCCCC</property>
+            <property name="borderLeftStyle">solid</property>
+            <property name="borderLeftWidth">1pt</property>
+            <property name="borderRightColor">#CCCCCC</property>
+            <property name="borderRightStyle">solid</property>
+            <property name="borderRightWidth">1pt</property>
+            <property name="borderTopColor">#CCCCCC</property>
+            <property name="borderTopStyle">solid</property>
+            <property name="borderTopWidth">1pt</property>
+        </style>
+    </styles>
+    <page-setup>
+        <simple-master-page name="Simple MasterPage" id="2">
+            <page-footer>
+                <text id="3">
+                    <property name="backgroundColor">#A5C1F5</property>
+                    <property name="fontFamily">"Raavi"</property>
+                    <property name="color">#525252</property>
+                    <property name="contentType">html</property>
+                    <text-property name="content"><![CDATA[Generated by Bugclipse at <value-of>new Date()</value-of> ]]></text-property>
+                </text>
+            </page-footer>
+        </simple-master-page>
+    </page-setup>
+    <body>
+        <label id="245">
+            <property name="backgroundColor">#A5C1F5</property>
+            <property name="fontFamily">"Raavi"</property>
+            <property name="fontSize">x-large</property>
+            <property name="fontWeight">bold</property>
+            <property name="color">#525252</property>
+            <property name="borderBottomColor">#808080</property>
+            <property name="borderBottomStyle">solid</property>
+            <property name="borderBottomWidth">1px</property>
+            <property name="borderLeftColor">#808080</property>
+            <property name="borderLeftStyle">solid</property>
+            <property name="borderLeftWidth">1px</property>
+            <property name="borderRightColor">#808080</property>
+            <property name="borderRightStyle">solid</property>
+            <property name="borderRightWidth">1px</property>
+            <property name="borderTopColor">#808080</property>
+            <property name="borderTopStyle">solid</property>
+            <property name="borderTopWidth">1px</property>
+            <property name="paddingTop">1pt</property>
+            <property name="textAlign">center</property>
+            <property name="widows">2</property>
+            <text-property name="text">Case report</text-property>
+        </label>
+        <table id="6">
+            <property name="marginTop">0pt</property>
+            <property name="width">100%</property>
+            <property name="dataSet">TasksDataSet</property>
+            <list-property name="boundDataColumns">
+                <structure>
+                    <property name="name">id</property>
+                    <expression name="expression">dataSetRow["id"]</expression>
+                    <property name="dataType">any</property>
+                </structure>
+                <structure>
+                    <property name="name">title</property>
+                    <expression name="expression">dataSetRow["title"]</expression>
+                    <property name="dataType">any</property>
+                </structure>
+                <structure>
+                    <property name="name">desc</property>
+                    <expression name="expression">dataSetRow["desc"]</expression>
+                    <property name="dataType">any</property>
+                </structure>
+                <structure>
+                    <property name="name">status</property>
+                    <expression name="expression">dataSetRow["status"]</expression>
+                    <property name="dataType">any</property>
+                </structure>
+                <structure>
+                    <property name="name">resolution</property>
+                    <expression name="expression">dataSetRow["resolution"]</expression>
+                    <property name="dataType">any</property>
+                </structure>
+                <structure>
+                    <property name="name">currEst</property>
+                    <expression name="expression">dataSetRow["currEst"]</expression>
+                    <property name="dataType">any</property>
+                </structure>
+                <structure>
+                    <property name="name">due</property>
+                    <expression name="expression">dataSetRow["due"]</expression>
+                    <property name="dataType">any</property>
+                </structure>
+                <structure>
+                    <property name="name">priority</property>
+                    <expression name="expression">dataSetRow["priority"]</expression>
+                    <property name="dataType">any</property>
+                </structure>
+                <structure>
+                    <property name="name">project</property>
+                    <expression name="expression">dataSetRow["project"]</expression>
+                    <property name="dataType">any</property>
+                </structure>
+                <structure>
+                    <property name="name">area</property>
+                    <expression name="expression">dataSetRow["area"]</expression>
+                    <property name="dataType">any</property>
+                </structure>
+                <structure>
+                    <property name="name">fixFor</property>
+                    <expression name="expression">dataSetRow["fixFor"]</expression>
+                    <property name="dataType">any</property>
+                </structure>
+                <structure>
+                    <property name="name">category</property>
+                    <expression name="expression">dataSetRow["category"]</expression>
+                    <property name="dataType">any</property>
+                </structure>
+                <structure>
+                    <property name="name">computer</property>
+                    <expression name="expression">dataSetRow["computer"]</expression>
+                    <property name="dataType">any</property>
+                </structure>
+                <structure>
+                    <property name="name">version</property>
+                    <expression name="expression">dataSetRow["version"]</expression>
+                    <property name="dataType">any</property>
+                </structure>
+                <structure>
+                    <property name="name">assignedTo</property>
+                    <expression name="expression">dataSetRow["assignedTo"]</expression>
+                    <property name="dataType">any</property>
+                </structure>
+                <structure>
+                    <property name="name">openedBy</property>
+                    <expression name="expression">dataSetRow["openedBy"]</expression>
+                    <property name="dataType">any</property>
+                </structure>
+                <structure>
+                    <property name="name">openedOn</property>
+                    <expression name="expression">dataSetRow["openedOn"]</expression>
+                    <property name="dataType">any</property>
+                </structure>
+                <structure>
+                    <property name="name">lastUpdatedOn</property>
+                    <expression name="expression">dataSetRow["lastUpdatedOn"]</expression>
+                    <property name="dataType">any</property>
+                </structure>
+                <structure>
+                    <property name="name">cc</property>
+                    <expression name="expression">dataSetRow["cc"]</expression>
+                    <property name="dataType">any</property>
+                </structure>
+            </list-property>
+            <method name="onCreate"><![CDATA[rowCount = 0;]]></method>
+            <column id="70">
+                <property name="width">5%</property>
+            </column>
+            <column id="71">
+                <property name="width">10%</property>
+                <list-property name="visibility">
+                    <structure>
+                        <property name="format">all</property>
+                        <expression name="valueExpr">!ShowAttributes.contains("sTitle")</expression>
+                    </structure>
+                </list-property>
+            </column>
+            <column id="72">
+                <property name="width">15%</property>
+                <list-property name="visibility">
+                    <structure>
+                        <property name="format">all</property>
+                        <expression name="valueExpr">!ShowAttributes.contains("description")</expression>
+                    </structure>
+                </list-property>
+            </column>
+            <column id="73">
+                <property name="width">5%</property>
+                <list-property name="visibility">
+                    <structure>
+                        <property name="format">all</property>
+                        <expression name="valueExpr">!ShowAttributes.contains("sStatus")</expression>
+                    </structure>
+                </list-property>
+            </column>
+            <column id="75">
+                <property name="width">5%</property>
+                <list-property name="visibility">
+                    <structure>
+                        <property name="format">all</property>
+                        <expression name="valueExpr">!ShowAttributes.contains("hrsCurrEst")</expression>
+                    </structure>
+                </list-property>
+            </column>
+            <column id="76">
+                <property name="width">5%</property>
+                <list-property name="visibility">
+                    <structure>
+                        <property name="format">all</property>
+                        <expression name="valueExpr">!ShowAttributes.contains("dtDue")</expression>
+                    </structure>
+                </list-property>
+            </column>
+            <column id="77">
+                <property name="width">5%</property>
+                <list-property name="visibility">
+                    <structure>
+                        <property name="format">all</property>
+                        <expression name="valueExpr">!ShowAttributes.contains("isPriority")</expression>
+                    </structure>
+                </list-property>
+            </column>
+            <column id="78">
+                <property name="width">5%</property>
+                <list-property name="visibility">
+                    <structure>
+                        <property name="format">all</property>
+                        <expression name="valueExpr">!ShowAttributes.contains("sProject")</expression>
+                    </structure>
+                </list-property>
+            </column>
+            <column id="79">
+                <property name="width">5%</property>
+                <list-property name="visibility">
+                    <structure>
+                        <property name="format">all</property>
+                        <expression name="valueExpr">!ShowAttributes.contains("sArea")</expression>
+                    </structure>
+                </list-property>
+            </column>
+            <column id="80">
+                <property name="width">5%</property>
+                <list-property name="visibility">
+                    <structure>
+                        <property name="format">all</property>
+                        <expression name="valueExpr">!ShowAttributes.contains("sFixFor")</expression>
+                    </structure>
+                </list-property>
+            </column>
+            <column id="81">
+                <property name="width">5%</property>
+                <list-property name="visibility">
+                    <structure>
+                        <property name="format">all</property>
+                        <expression name="valueExpr">!ShowAttributes.contains("sCategory")</expression>
+                    </structure>
+                </list-property>
+            </column>
+            <column id="82">
+                <property name="width">5%</property>
+                <list-property name="visibility">
+                    <structure>
+                        <property name="format">all</property>
+                        <expression name="valueExpr">!ShowAttributes.contains("sComputer")</expression>
+                    </structure>
+                </list-property>
+            </column>
+            <column id="83">
+                <property name="width">5%</property>
+                <list-property name="visibility">
+                    <structure>
+                        <property name="format">all</property>
+                        <expression name="valueExpr">!ShowAttributes.contains("sVersion")</expression>
+                    </structure>
+                </list-property>
+            </column>
+            <column id="84">
+                <property name="width">5%</property>
+                <list-property name="visibility">
+                    <structure>
+                        <property name="format">all</property>
+                        <expression name="valueExpr">!ShowAttributes.contains("sPersonAssignedTo")</expression>
+                    </structure>
+                </list-property>
+            </column>
+            <column id="85">
+                <property name="width">5%</property>
+                <list-property name="visibility">
+                    <structure>
+                        <property name="format">all</property>
+                        <expression name="valueExpr">!ShowAttributes.contains("opened_by")</expression>
+                    </structure>
+                </list-property>
+            </column>
+            <column id="86">
+                <property name="width">5%</property>
+                <list-property name="visibility">
+                    <structure>
+                        <property name="format">all</property>
+                        <expression name="valueExpr">!ShowAttributes.contains("dtOpened")</expression>
+                    </structure>
+                </list-property>
+            </column>
+            <column id="87">
+                <property name="width">5%</property>
+                <list-property name="visibility">
+                    <structure>
+                        <property name="format">all</property>
+                        <expression name="valueExpr">!ShowAttributes.contains("dtLastUpdated")</expression>
+                    </structure>
+                </list-property>
+            </column>
+            <column id="88">
+                <property name="width">5%</property>
+                <list-property name="visibility">
+                    <structure>
+                        <property name="format">all</property>
+                        <expression name="valueExpr">!ShowAttributes.contains("cc")</expression>
+                    </structure>
+                </list-property>
+            </column>
+            <column id="89">
+                <property name="width">0%</property>
+            </column>
+            <header>
+                <row id="7">
+                    <property name="height">0.583in</property>
+                    <property name="backgroundColor">#12406D</property>
+                    <property name="fontFamily">"Raavi"</property>
+                    <property name="fontSize">small</property>
+                    <property name="fontWeight">bold</property>
+                    <property name="color">#FFFFFF</property>
+                    <property name="textAlign">left</property>
+                    <cell id="8">
+                        <property name="paddingTop">1pt</property>
+                        <label id="91">
+                            <text-property name="text">ID</text-property>
+                        </label>
+                    </cell>
+                    <cell id="9">
+                        <label id="92">
+                            <text-property name="text">Title</text-property>
+                        </label>
+                    </cell>
+                    <cell id="10">
+                        <label id="93">
+                            <text-property name="text">Description</text-property>
+                        </label>
+                    </cell>
+                    <cell id="11">
+                        <label id="94">
+                            <text-property name="text">Status</text-property>
+                        </label>
+                    </cell>
+                    <cell id="13">
+                        <label id="96">
+                            <text-property name="text">Current estimate</text-property>
+                        </label>
+                    </cell>
+                    <cell id="14">
+                        <label id="97">
+                            <text-property name="text">Due</text-property>
+                        </label>
+                    </cell>
+                    <cell id="15">
+                        <label id="98">
+                            <text-property name="text">Priority</text-property>
+                        </label>
+                    </cell>
+                    <cell id="16">
+                        <label id="99">
+                            <text-property name="text">Project</text-property>
+                        </label>
+                    </cell>
+                    <cell id="17">
+                        <label id="100">
+                            <text-property name="text">Area</text-property>
+                        </label>
+                    </cell>
+                    <cell id="18">
+                        <label id="101">
+                            <text-property name="text">Fix for</text-property>
+                        </label>
+                    </cell>
+                    <cell id="19">
+                        <label id="102">
+                            <text-property name="text">Category</text-property>
+                        </label>
+                    </cell>
+                    <cell id="20">
+                        <label id="103">
+                            <text-property name="text">Computer</text-property>
+                        </label>
+                    </cell>
+                    <cell id="21">
+                        <label id="104">
+                            <text-property name="text">Version</text-property>
+                        </label>
+                    </cell>
+                    <cell id="22">
+                        <label id="105">
+                            <text-property name="text">Assigned To</text-property>
+                        </label>
+                    </cell>
+                    <cell id="23">
+                        <label id="106">
+                            <text-property name="text">Opened By</text-property>
+                        </label>
+                    </cell>
+                    <cell id="24">
+                        <label id="107">
+                            <text-property name="text">Opened On</text-property>
+                        </label>
+                    </cell>
+                    <cell id="25">
+                        <label id="108">
+                            <text-property name="text">Last updated On</text-property>
+                        </label>
+                    </cell>
+                    <cell id="26">
+                        <label id="109">
+                            <text-property name="text">CC</text-property>
+                        </label>
+                    </cell>
+                    <cell id="27"/>
+                </row>
+            </header>
+            <detail>
+                <row id="28">
+                    <method name="onCreate"><![CDATA[if (rowCount % 2 == 0)
+	this.getStyle().backgroundColor="white";
+rowCount++;]]></method>
+                    <property name="backgroundColor">#E0EAFC</property>
+                    <property name="fontFamily">"Raavi"</property>
+                    <property name="fontSize">smaller</property>
+                    <cell id="29">
+                        <property name="paddingTop">1pt</property>
+                        <data id="113">
+                            <property name="resultSetColumn">id</property>
+                        </data>
+                    </cell>
+                    <cell id="30">
+                        <data id="114">
+                            <property name="resultSetColumn">title</property>
+                        </data>
+                    </cell>
+                    <cell id="31">
+                        <data id="115">
+                            <property name="resultSetColumn">desc</property>
+                        </data>
+                    </cell>
+                    <cell id="32">
+                        <data id="116">
+                            <property name="resultSetColumn">status</property>
+                        </data>
+                    </cell>
+                    <cell id="34">
+                        <data id="118">
+                            <property name="resultSetColumn">currEst</property>
+                        </data>
+                    </cell>
+                    <cell id="35">
+                        <data id="119">
+                            <property name="resultSetColumn">due</property>
+                        </data>
+                    </cell>
+                    <cell id="36">
+                        <data id="120">
+                            <property name="resultSetColumn">priority</property>
+                        </data>
+                    </cell>
+                    <cell id="37">
+                        <data id="121">
+                            <property name="resultSetColumn">project</property>
+                        </data>
+                    </cell>
+                    <cell id="38">
+                        <data id="122">
+                            <property name="resultSetColumn">area</property>
+                        </data>
+                    </cell>
+                    <cell id="39">
+                        <data id="123">
+                            <property name="resultSetColumn">fixFor</property>
+                        </data>
+                    </cell>
+                    <cell id="40">
+                        <data id="124">
+                            <property name="resultSetColumn">category</property>
+                        </data>
+                    </cell>
+                    <cell id="41">
+                        <data id="125">
+                            <property name="resultSetColumn">computer</property>
+                        </data>
+                    </cell>
+                    <cell id="42">
+                        <data id="126">
+                            <property name="resultSetColumn">version</property>
+                        </data>
+                    </cell>
+                    <cell id="43">
+                        <data id="127">
+                            <property name="resultSetColumn">assignedTo</property>
+                        </data>
+                    </cell>
+                    <cell id="44">
+                        <data id="128">
+                            <property name="resultSetColumn">openedBy</property>
+                        </data>
+                    </cell>
+                    <cell id="45">
+                        <data id="129">
+                            <property name="resultSetColumn">openedOn</property>
+                        </data>
+                    </cell>
+                    <cell id="46">
+                        <data id="130">
+                            <property name="resultSetColumn">lastUpdatedOn</property>
+                        </data>
+                    </cell>
+                    <cell id="47">
+                        <data id="131">
+                            <property name="resultSetColumn">cc</property>
+                        </data>
+                    </cell>
+                    <cell id="48"/>
+                </row>
+            </detail>
+            <footer>
+                <row id="49">
+                    <property name="backgroundColor">#12406D</property>
+                    <property name="fontFamily">"Raavi"</property>
+                    <property name="color">#FFFFFF</property>
+                    <cell id="50"/>
+                    <cell id="51"/>
+                    <cell id="52"/>
+                    <cell id="53"/>
+                    <cell id="55"/>
+                    <cell id="56"/>
+                    <cell id="57"/>
+                    <cell id="58"/>
+                    <cell id="59"/>
+                    <cell id="60"/>
+                    <cell id="61"/>
+                    <cell id="62"/>
+                    <cell id="63"/>
+                    <cell id="64"/>
+                    <cell id="65"/>
+                    <cell id="66"/>
+                    <cell id="67"/>
+                    <cell id="68"/>
+                    <cell id="69"/>
+                </row>
+            </footer>
+        </table>
+    </body>
+</report>

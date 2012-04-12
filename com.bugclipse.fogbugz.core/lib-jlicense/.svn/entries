@@ -1,0 +1,29 @@
+8
+
+dir
+307
+svn://localhost/Bugclipse/trunk/com.bugclipse.fogbugz.core/lib-jlicense
+svn://localhost
+
+
+
+2007-10-10T09:50:02.625000Z
+115
+subhash
+
+
+svn:special svn:externals svn:needs-lock
+
+jlic.jar
+file
+
+
+
+
+2007-10-09T09:34:00.828125Z
+c1b4ca3c4bf0527606e780c42eacb313
+2007-10-10T09:50:02.625000Z
+115
+subhash
+has-props
+

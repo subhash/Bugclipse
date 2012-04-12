@@ -1,0 +1,100 @@
+8
+
+dir
+57
+svn://localhost/scratchpad/bugclipse/fogbugzAPI/trunk/com.bugclipse.fogbugz.api/data
+svn://localhost
+
+
+
+2007-08-18T17:23:20.765625Z
+57
+subhash
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+6df6c074-f71b-b44e-839d-296f1544cb4b
+
+fogbugz-api.xsd
+file
+
+
+
+
+2007-08-18T02:19:17.000000Z
+200b15a0a7f5b1b189f91d25bb42b338
+2007-08-18T06:17:52.750000Z
+56
+subhash
+
+payload.xml
+file
+
+
+
+
+2007-08-18T02:05:18.546875Z
+7c19699a11fc7dcad6957590f5960fc7
+2007-08-18T06:17:52.750000Z
+56
+subhash
+
+srcgen-binding.xml
+file
+
+
+
+
+2007-08-18T10:35:22.828125Z
+f1a742900499495a001ee14047fa05e6
+2007-08-18T17:23:20.765625Z
+57
+subhash
+
+Copy of payload.xml
+file
+
+
+
+
+2007-08-18T01:57:19.609000Z
+c1a0005ba36d615950dd8c1b58044d50
+2007-08-18T06:17:52.750000Z
+56
+subhash
+
+payload2.xml
+file
+
+
+
+
+2007-08-18T06:43:25.359375Z
+9329011ba2cced64ce103b1d5b7fbe49
+2007-08-18T17:23:20.765625Z
+57
+subhash
+
+build.xml
+file
+
+
+
+
+2007-08-18T03:05:32.031250Z
+6f76fdf57e319e8fc0bf9bbd790b5146
+2007-08-18T06:17:52.750000Z
+56
+subhash
+

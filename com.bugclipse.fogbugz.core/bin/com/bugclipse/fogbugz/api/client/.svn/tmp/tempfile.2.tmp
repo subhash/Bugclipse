@@ -1,0 +1,291 @@
+package com.bugclipse.fogbugz.api.client;
+
+import java.io.IOException;
+import java.io.StringReader;
+import java.net.HttpURLConnection;
+import java.net.Proxy;
+<<<<<<< .mine
+import java.util.Date;
+=======
+import java.util.ArrayList;
+>>>>>>> .r93
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+
+import org.apache.commons.httpclient.Credentials;
+import org.apache.commons.httpclient.HttpClient;
+import org.apache.commons.httpclient.HttpException;
+import org.apache.commons.httpclient.MultiThreadedHttpConnectionManager;
+import org.apache.commons.httpclient.UsernamePasswordCredentials;
+import org.apache.commons.httpclient.auth.AuthScope;
+import org.apache.commons.httpclient.cookie.CookiePolicy;
+import org.apache.commons.httpclient.methods.GetMethod;
+import org.eclipse.mylyn.web.core.WebClientUtil;
+import org.exolab.castor.types.DateTime;
+import org.exolab.castor.xml.MarshalException;
+import org.exolab.castor.xml.Unmarshaller;
+import org.exolab.castor.xml.ValidationException;
+
+import com.bugclipse.fogbugz.api.Case;
+import com.bugclipse.fogbugz.api.Filter;
+import com.bugclipse.fogbugz.api.Project;
+import com.bugclipse.fogbugz.api.Response;
+import com.bugclipse.fogbugz.core.FogBugzAttributeFactory;
+import com.bugclipse.fogbugz.core.FogBugzAttributeFactory.FogBugzAttribute;
+
+public class FogBugzClient implements IFogBugzClient {
+
+	private HttpClient httpClient;
+
+	private boolean authenticated;
+
+	private String token;
+
+	private String repositoryUrl, username, password;
+
+	private Proxy proxy;
+
+	private static final FogBugzAttributeFactory attributeFactory = new FogBugzAttributeFactory();
+
+	public FogBugzClient(String repositoryUrl, String username,
+			String password, Proxy proxy) {
+		this.repositoryUrl = repositoryUrl;
+		this.username = username;
+		this.password = password;
+		this.proxy = proxy;
+		this.httpClient = new HttpClient();
+		httpClient
+				.setHttpConnectionManager(new MultiThreadedHttpConnectionManager());
+	}
+
+	public Project[] getProjects() throws FogBugzClientException {
+		GetMethod method = connect(repositoryUrl + LIST_PROJECTS_URL);
+		Response response = unmarshalResponse(method);
+		return response.getProjects().getProject();
+	}
+
+	public Filter[] getFilters() throws FogBugzClientException {
+		GetMethod method = connect(repositoryUrl + LIST_FILTERS_URL);
+		Response response = unmarshalResponse(method);
+		return response.getFilters().getFilter();
+	}
+
+	public String[] getOptions(FogBugzAttribute attribute)
+			throws FogBugzClientException {
+		ArrayList<String> options = new ArrayList<String>();
+		if (attribute.equals(FogBugzAttribute.PROJECT)) {
+			Project[] projects = getProjects();
+			for (Project project : projects) {
+				options.add(project.getSProject());
+			}
+		}
+		return options.toArray(new String[0]);
+	}
+
+	public Case[] getCasesIn(String filterId) throws FogBugzClientException {
+		GetMethod method = connect(repositoryUrl + SET_CURRENT_FILTER_URL
+				+ filterId);
+		method.releaseConnection();
+		String cols = "ixBug,fOpen,sTitle,sLatestTextSummary,sProject,sArea,"
+				+ "ixPersonAssignedTo,sPersonAssignedTo,sEmailAssignedTo,ixStatus,sStatus,"
+				+ "ixPriority,sPriority,ixFixFor,sFixFor,dtFixFor,"
+				+ "sVersion,sComputer,hrsCurrEst,hrsElapsed,ixCategory,sCategory,dtOpened,dtResolved,dtClosed,dtLastUpdated,dtDue,events";
+		method = connect(repositoryUrl + LIST_CASES_URL + "&cols=" + cols);
+		Response response = unmarshalResponse(method);
+		return response.getCases().getCase();
+	}
+
+	public Map<String, Case> getCases(Set<String> caseIds)
+			throws FogBugzClientException {
+		HashMap<String, Case> caseMap = new HashMap<String, Case>();
+		String cols = "ixBug,fOpen,sTitle,sLatestTextSummary,sProject,sArea,"
+				+ "ixPersonAssignedTo,sPersonAssignedTo,sEmailAssignedTo,ixStatus,sStatus,"
+				+ "ixPriority,sPriority,ixFixFor,sFixFor,dtFixFor,"
+				+ "sVersion,sComputer,hrsCurrEst,hrsElapsed,ixCategory,sCategory,dtOpened,dtResolved,dtClosed,dtLastUpdated,dtDue,events";
+		Iterator i = caseIds.iterator();
+		if (i.hasNext()) {
+			String ids = "" + i.next();
+			while (i.hasNext())
+				ids += "," + i.next();
+			GetMethod method = connect(repositoryUrl + LIST_CASES_URL + ids
+					+ "&cols=" + cols);
+			Response response = unmarshalResponse(method);
+			Case[] cases = response.getCases().getCase();
+			for (int j = 0; j < cases.length; j++) {
+				caseMap.put(cases[j].getIxBug() + "", cases[j]);
+			}
+		}
+		return caseMap;
+	}
+
+	private synchronized GetMethod connect(String serverURL)
+			throws FogBugzClientException {
+		try {
+			GetMethod m = connectInternal(serverURL);
+			return m;
+		} catch (MarshalException e) {
+			throw new FogBugzClientException(e);
+		} catch (ValidationException e) {
+			throw new FogBugzClientException(e);
+		} catch (HttpException e) {
+			throw new FogBugzClientException(e);
+		} catch (IOException e) {
+			throw new FogBugzClientException(e);
+		}
+	}
+
+	private GetMethod connectInternal(String serverURL)
+			throws MarshalException, ValidationException, HttpException,
+			FogBugzClientException, IOException {
+		WebClientUtil.setupHttpClient(httpClient, proxy, serverURL, null, null);
+
+		for (int attempt = 0; attempt < 2; attempt++) {
+			// force authentication
+			System.out.println("authenticated? " + authenticated);
+			if (!authenticated && hasAuthenticationCredentials()) {
+				authenticate();
+			}
+
+			String requestUrl = WebClientUtil.getRequestPath(serverURL
+					+ "&token=" + token);
+			GetMethod method = new GetMethod(requestUrl);
+			System.out.println("request URL is - " + serverURL + "&token="
+					+ token);
+			method.getParams().setCookiePolicy(
+					CookiePolicy.BROWSER_COMPATIBILITY);
+			int code;
+			try {
+				code = httpClient.executeMethod(method);
+			} catch (IOException e) {
+				method.releaseConnection();
+				e.printStackTrace();
+				throw e;
+			}
+
+			if (code == HttpURLConnection.HTTP_OK) {
+				return method;
+			} else if (code == HttpURLConnection.HTTP_UNAUTHORIZED
+					|| code == HttpURLConnection.HTTP_FORBIDDEN) {
+				// login or re-authenticate due to an expired session
+				method.releaseConnection();
+				authenticated = false;
+				authenticate();
+			} else {
+				throw new FogBugzClientException("code = " + code);
+			}
+		}
+
+		throw new FogBugzClientException("Session might have expired!");
+	}
+
+	protected boolean hasAuthenticationCredentials() {
+		return username != null && username.length() > 0;
+	}
+
+	private void authenticate() throws FogBugzClientException, HttpException,
+			IOException, MarshalException, ValidationException {
+		// WebClientUtil.setupHttpClient(httpClient, proxy, repositoryUrl, null,
+		// null);
+		if (!hasAuthenticationCredentials()) {
+			throw new FogBugzClientException("No authentication credentials!");
+		}
+
+		// try standard basic/digest authentication first
+		Credentials credentials = new UsernamePasswordCredentials(username,
+				password);
+		httpClient.getState().setCredentials(
+				new AuthScope(AuthScope.ANY_HOST, AuthScope.ANY_PORT,
+						AuthScope.ANY_REALM), credentials);
+
+		GetMethod method = new GetMethod(WebClientUtil
+				.getRequestPath(repositoryUrl + "/api.asp?cmd=logon&email="
+						+ username + "&password=" + password));
+		method.setFollowRedirects(false);
+		int code;
+		try {
+			httpClient.getParams().setAuthenticationPreemptive(true);
+			code = httpClient.executeMethod(method);
+			if (code == HttpURLConnection.HTTP_UNAUTHORIZED
+					|| code == HttpURLConnection.HTTP_FORBIDDEN) {
+				throw new FogBugzClientException("Session might have expired!");
+			}
+			authenticated = true;
+			Response r = unmarshalResponse(method);
+			token = r.getToken();
+			System.out.println(token);
+		} finally {
+			method.releaseConnection();
+			httpClient.getParams().setAuthenticationPreemptive(false);
+		}
+
+		// the expected return code is a redirect, anything else is suspicious
+		if (code == HttpURLConnection.HTTP_OK) {
+			// try form-based authentication via AccountManagerPlugin as a
+			// fall-back
+			// authenticateAccountManager(httpClient);
+		}
+
+		// validateAuthenticationState(httpClient);
+
+		// success since no exception was thrown
+
+	}
+
+	private Response unmarshalResponse(GetMethod method)
+			throws FogBugzClientException {
+		try {
+			Unmarshaller un = new Unmarshaller(Response.class);
+			un.setIgnoreExtraElements(true);
+			un.setIgnoreExtraAttributes(true);
+			un.setValidation(false);
+			String respBody = method.getResponseBodyAsString();
+			System.out.println(respBody);
+			return (Response) un.unmarshal(new StringReader(respBody));
+		} catch (IOException e) {
+			throw new FogBugzClientException(e);
+		} catch (MarshalException e) {
+			throw new FogBugzClientException(e);
+		} catch (ValidationException e) {
+			throw new FogBugzClientException(e);
+		} finally {
+			System.out.println("releasing method connection");
+			method.releaseConnection();
+		}
+	}
+
+	public static void main(String[] args) throws Exception {
+		//System.out.println(new DateTime("2007-07-18T15:18:36Z"));
+		FogBugzClient client = new FogBugzClient("https://subhash.fogbugz.com",
+				"cs19739@yahoo.com", "cs19739", null);
+		Filter[] p = client.getFilters();
+		Case[] c = client.getCasesIn(p[1].getSFilter());
+		Set<String> caseIds = new HashSet<String>();
+		for (int i = 0; i < c.length; i++) {
+			System.out.println("case history - " + c[i].getSTitle());
+//			for (int j = 0; j < c[i].getEventsContained().getEventContained().length; j++) {
+//				System.out.println("      event - "
+//						+ c[i].getEventsContained().getEventContained()[j]
+//								.getEvtDescription());
+//			}
+			System.out.println("date - "+c[i].getDtOpened());
+			caseIds.add(c[i].getIxBug() + "");
+		}
+		Map<String, Case> map = client.getCases(caseIds);
+		for (String string : map.keySet()) {
+			System.out.println("key - " + string + " value - "
+					+ map.get(string).getSLatestTextSummary());
+		}
+
+	}
+
+	public Case getCase(String id) throws FogBugzClientException {
+		Set<String> data = new HashSet<String>();
+		data.add(id);
+		Map<String, Case> returnedData = getCases(data);
+		return returnedData.get(id);
+	}
+
+}

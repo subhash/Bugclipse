@@ -1,0 +1,29 @@
+8
+
+dir
+240
+svn://localhost/Bugclipse/trunk/com.bugclipse.fogbugz.reports.engine/plugins/org.apache.commons.codec_1.3.0.v20070531/lib
+svn://localhost
+
+
+
+2007-12-16T10:21:08.031250Z
+232
+subhash
+
+
+svn:special svn:externals svn:needs-lock
+
+commons-codec-1.3.jar
+file
+
+
+
+
+2007-12-16T09:52:30.171875Z
+3f479cf6f0a500c2648ddcb06f13de6a
+2007-12-16T10:21:08.031250Z
+232
+subhash
+has-props
+

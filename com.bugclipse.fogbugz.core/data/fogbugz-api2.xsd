@@ -1,0 +1,745 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<element name="response">
+		<complexType>
+			<sequence>
+				<element name="version" type="integer" maxOccurs="1"
+					minOccurs="0" />
+				<element name="minversion" type="integer" maxOccurs="1"
+					minOccurs="0" />
+				<element name="url" type="string" maxOccurs="1"
+					minOccurs="0" />
+				<element name="token" type="string" maxOccurs="1"
+					minOccurs="0" />
+				<element name="error" maxOccurs="1" minOccurs="0">
+					<complexType mixed="true">
+						<sequence />
+						<attribute name="code" type="integer" />
+					</complexType>
+				</element>
+				<element name="filters" maxOccurs="1" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="filter"
+								maxOccurs="unbounded">
+								<complexType mixed="true">
+									<sequence />
+									<attribute name="type"
+										type="string" />
+									<attribute name="sFilter"
+										type="string" />
+								</complexType>
+							</element>
+						</sequence>
+					</complexType>
+				</element>
+				<element name="description" type="string" maxOccurs="1"
+					minOccurs="0" />
+				<element name="sFilter" type="string" maxOccurs="1"
+					minOccurs="0" />
+
+				<element name="case" maxOccurs="1"
+					minOccurs="0">
+					<complexType>
+						<attribute name="ixBug" type="integer" />
+						<attribute name="operations" type="string" />
+					</complexType>
+				</element>
+
+				<element name="cases" maxOccurs="1" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="case" maxOccurs="unbounded"
+								minOccurs="0">
+								<complexType>
+									<sequence>
+										<element name="ixBug"
+											type="integer" maxOccurs="1" minOccurs="0" />
+										<element name="fOpen"
+											type="boolean" maxOccurs="1" minOccurs="0" />
+										<element name="sTitle"
+											type="string" maxOccurs="1" minOccurs="0" />
+										<element
+											name="sLatestTextSummary" type="string" maxOccurs="1"
+											minOccurs="0" />
+										<element
+											name="ixBugEventLatestText" type="integer" maxOccurs="1"
+											minOccurs="0" />
+										<element name="ixProject"
+											type="integer" maxOccurs="1" minOccurs="0" />
+										<element name="sProject"
+											type="string" maxOccurs="1" minOccurs="0" />
+										<element name="ixArea"
+											type="integer" maxOccurs="1" minOccurs="0" />
+										<element name="sArea"
+											type="string" maxOccurs="1" minOccurs="0" />
+										<element name="ixGroup"
+											type="integer" maxOccurs="1" minOccurs="0" />
+										<element
+											name="ixPersonAssignedTo" type="integer" maxOccurs="1"
+											minOccurs="0" />
+										<element
+											name="sPersonAssignedTo" type="string" maxOccurs="1"
+											minOccurs="0" />
+										<element name="sEmailAssignedTo"
+											type="string" maxOccurs="1" minOccurs="0" />
+										<element name="ixPersonOpenedBy"
+											type="integer" maxOccurs="1" minOccurs="0" />
+										<element
+											name="ixPersonResolvedBy" type="integer" maxOccurs="1"
+											minOccurs="0" />
+										<element name="ixPersonClosedBy"
+											maxOccurs="1" minOccurs="0" />
+										<element
+											name="ixPersonLastEditedBy" type="integer" maxOccurs="1"
+											minOccurs="0" />
+										<element name="ixStatus"
+											type="integer" maxOccurs="1" minOccurs="0" />
+										<element name="sStatus"
+											type="string" maxOccurs="1" minOccurs="0" />
+										<element name="ixPriority"
+											type="integer" maxOccurs="1" minOccurs="0" />
+										<element name="sPriority"
+											type="string" maxOccurs="1" minOccurs="0" />
+										<element name="ixFixFor"
+											type="integer" maxOccurs="1" minOccurs="0" />
+										<element name="sFixFor"
+											type="string" maxOccurs="1" minOccurs="0" />
+										<element name="dtFixFor"
+											type="dateTime" maxOccurs="1" minOccurs="0" />
+										<element name="sVersion"
+											type="string" maxOccurs="1" minOccurs="0" />
+										<element name="sComputer"
+											type="string" maxOccurs="1" minOccurs="0" />
+										<element name="hrsOrigEst"
+											type="float" maxOccurs="1" minOccurs="0" />
+										<element name="hrsCurrEst"
+											type="float" maxOccurs="1" minOccurs="0" />
+										<element name="hrsElapsed"
+											type="float" maxOccurs="1" minOccurs="0" />
+										<element name="c" type="integer"
+											maxOccurs="1" minOccurs="0" />
+										<element name="sCustomerEmail"
+											maxOccurs="1" minOccurs="0" />
+										<element name="ixMailbox"
+											type="integer" maxOccurs="1" minOccurs="0" />
+										<element name="ixCategory"
+											type="integer" maxOccurs="1" minOccurs="0" />
+										<element name="sCategory"
+											type="string" maxOccurs="1" minOccurs="0" />
+										<element name="dtOpened"
+											type="dateTime" maxOccurs="1" minOccurs="0" />
+										<element name="dtResolved"
+											type="dateTime" maxOccurs="1" minOccurs="0" />
+										<element name="dtClosed"
+											type="dateTime" maxOccurs="1" minOccurs="0" />
+										<element name="ixBugEventLatest"
+											type="integer" maxOccurs="1" minOccurs="0" />
+										<element name="dtLastUpdated"
+											type="dateTime" maxOccurs="1" minOccurs="0" />
+										<element name="fReplied"
+											type="boolean" maxOccurs="1" minOccurs="0" />
+										<element name="fForwarded"
+											type="boolean" maxOccurs="1" minOccurs="0" />
+										<element name="sTicket"
+											maxOccurs="1" minOccurs="0" />
+										<element name="ixDiscussTopic"
+											type="integer" maxOccurs="1" minOccurs="0" />
+										<element name="dtDue"
+											type="dateTime" maxOccurs="1" minOccurs="0" />
+										<element name="sReleaseNotes"
+											maxOccurs="1" minOccurs="0" />
+										<element
+											name="ixBugEventLastView" type="integer" maxOccurs="1"
+											minOccurs="0" />
+										<element name="dtLastView"
+											type="dateTime" maxOccurs="1" minOccurs="0" />
+										<element name="ixRelatedBugs"
+											type="string" maxOccurs="1" minOccurs="0" />
+										<element
+											name="sScoutDescription" type="string" maxOccurs="1"
+											minOccurs="0" />
+										<element name="sScoutMessage"
+											type="string" maxOccurs="1" minOccurs="0" />
+										<element
+											name="fScoutStopReporting" type="boolean" maxOccurs="1"
+											minOccurs="0" />
+										<element name="sEvent"
+											type="string" maxOccurs="1" minOccurs="0" />
+										<element name="fSubscribed"
+											type="boolean" maxOccurs="1" minOccurs="0" />
+										<element name="events"
+											maxOccurs="1" minOccurs="0">
+											<complexType>
+												<sequence>
+													<element
+														name="event" maxOccurs="unbounded" minOccurs="0">
+														<complexType>
+															<sequence>
+																<element
+																	name="ixBugEvent" type="integer"  maxOccurs="1" minOccurs="0" />
+																<element
+																	name="evt" type="integer"  maxOccurs="1" minOccurs="0" />
+																<element
+																	name="sVerb" type="string"  maxOccurs="1" minOccurs="0" />
+																<element
+																	name="ixPerson" type="integer"  maxOccurs="1" minOccurs="0" />
+																<element
+																	name="sPerson" type="string"  maxOccurs="1" minOccurs="0" />
+																<element
+																	name="dt" type="dateTime"  maxOccurs="1" minOccurs="0" />
+																<element
+																	name="s" type="string"  maxOccurs="1" minOccurs="0" />
+																<element
+																	name="bEmail" type="boolean"  maxOccurs="1" minOccurs="0" />
+																<element
+																	name="bExternal" type="boolean"  maxOccurs="1" minOccurs="0" />
+																<element
+																	name="sChanges" type="string"  maxOccurs="1" minOccurs="0" />
+																<element
+																	name="evtDescription" type="string"  maxOccurs="1" minOccurs="0" />
+																<element
+																	name="rgAttachments"  maxOccurs="1" minOccurs="0" >
+																	<complexType>
+																		<sequence>
+																			<element
+																				name="attachment"  maxOccurs="unbounded" minOccurs="0" >
+																				<complexType>
+																					<sequence>
+																						<element
+																							name="sFileName" type="string"  maxOccurs="1" minOccurs="0" />
+																						<element
+																							name="sURL" type="string"  maxOccurs="1" minOccurs="0" />
+																					</sequence>
+																				</complexType>
+																			</element>
+																		</sequence>
+																	</complexType>
+																</element>
+																<element
+																	name="sFrom" type="string"  maxOccurs="1" minOccurs="0" />
+																<element
+																	name="sTo" type="string"  maxOccurs="1" minOccurs="0" />
+																<element
+																	name="sCC"  maxOccurs="1" minOccurs="0" />
+																<element
+																	name="sBCC"  maxOccurs="1" minOccurs="0" />
+																<element
+																	name="sReplyTo"  maxOccurs="1" minOccurs="0" />
+																<element
+																	name="sSubject"  maxOccurs="1" minOccurs="0" />
+																<element
+																	name="sDate" type="string"  maxOccurs="1" minOccurs="0" />
+																<element
+																	name="sBodyText"  maxOccurs="1" minOccurs="0" />
+																<element
+																	name="sBodyHTML"  maxOccurs="1" minOccurs="0" />
+															</sequence>
+															<attribute
+																name="ixBugEvent" type="integer" />
+															<attribute
+																name="ixBug" type="integer" />
+														</complexType>
+													</element>
+												</sequence>
+											</complexType>
+										</element>
+
+									</sequence>
+									<attribute name="ixBug"
+										type="integer" />
+									<attribute name="operations"
+										type="string" />
+								</complexType>
+							</element>
+						</sequence>
+						<attribute name="count" type="integer" />
+					</complexType>
+				</element>
+				<element name="events" maxOccurs="1" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="event">
+								<complexType>
+									<sequence>
+										<element name="ixBugEvent"
+											type="integer" />
+										<element name="evt"
+											type="integer" />
+										<element name="sVerb"
+											type="string" />
+										<element name="ixPerson"
+											type="integer" />
+										<element name="sPerson"
+											type="string" />
+										<element name="dt" type="dateTime" />
+										<element name="s" type="string" />
+										<element name="bEmail"
+											type="boolean" />
+										<element name="bExternal"
+											type="boolean" />
+										<element name="sChanges"
+											type="string" />
+										<element name="evtDescription"
+											type="string" />
+										<element name="rgAttachments">
+											<complexType>
+												<sequence>
+													<element
+														name="attachment">
+														<complexType>
+															<sequence>
+																<element
+																	name="sFileName" type="string" />
+																<element
+																	name="sURL" type="string" />
+															</sequence>
+														</complexType>
+													</element>
+												</sequence>
+											</complexType>
+										</element>
+										<element name="sFrom"
+											type="string" />
+										<element name="sTo"
+											type="string" />
+										<element name="sCC" />
+										<element name="sBCC" />
+										<element name="sReplyTo" />
+										<element name="sSubject" />
+										<element name="sDate"
+											type="string" />
+										<element name="sBodyText" />
+										<element name="sBodyHTML" />
+									</sequence>
+									<attribute name="ixBugEvent"
+										type="integer" />
+									<attribute name="ixBug"
+										type="integer" />
+								</complexType>
+							</element>
+						</sequence>
+					</complexType>
+				</element>
+				<element name="projects" maxOccurs="1" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="project"
+								maxOccurs="unbounded" minOccurs="0">
+								<complexType>
+									<sequence>
+										<element name="ixProject"
+											type="integer" maxOccurs="1" minOccurs="0" />
+										<element name="sProject"
+											type="string" maxOccurs="1" minOccurs="0" />
+										<element name="ixPersonOwner"
+											type="integer" maxOccurs="1" minOccurs="0" />
+										<element name="sPersonOwner"
+											type="string" maxOccurs="1" minOccurs="0" />
+										<element name="sEmail"
+											type="string" maxOccurs="1" minOccurs="0" />
+										<element name="sPhone"
+											type="string" maxOccurs="1" minOccurs="0" />
+										<element name="fInbox"
+											type="boolean" maxOccurs="1" minOccurs="0" />
+										<element name="ixGroup"
+											type="integer" maxOccurs="1" minOccurs="0" />
+										<element name="iType"
+											type="integer" maxOccurs="1" minOccurs="0" />
+										<element name="sGroup"
+											type="string" maxOccurs="1" minOccurs="0" />
+									</sequence>
+								</complexType>
+							</element>
+						</sequence>
+					</complexType>
+				</element>
+				<element name="areas" maxOccurs="1" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="area"  maxOccurs="unbounded" minOccurs="0">
+								<complexType>
+									<sequence>
+										<element name="ixArea"
+											type="integer" />
+										<element name="sArea"
+											type="string" />
+										<element name="ixProject"
+											type="integer" />
+										<element name="sProject"
+											type="string" />
+										<element name="ixPersonOwner" />
+										<element name="sPersonOwner" />
+										<element name="nType"
+											type="integer" />
+										<element name="cDoc"
+											type="integer" />
+									</sequence>
+								</complexType>
+							</element>
+						</sequence>
+					</complexType>
+				</element>
+				<element name="fixfors" maxOccurs="1" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="fixfor" maxOccurs="unbounded" minOccurs="0">
+								<complexType>
+									<sequence>
+										<element name="ixFixFor"
+											type="integer" />
+										<element name="sFixFor"
+											type="string" />
+										<element name="fDeleted"
+											type="boolean" />
+										<element name="dt" type="date" />
+										<element name="ixProject"
+											type="integer" />
+										<element name="sProject"
+											type="string" />
+									</sequence>
+								</complexType>
+							</element>
+						</sequence>
+					</complexType>
+				</element>
+				<element name="priorities" maxOccurs="1"
+					minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="priority"
+								maxOccurs="unbounded">
+								<complexType>
+									<sequence>
+										<element name="ixPriority"
+											type="integer" />
+										<element name="sPriority"
+											type="string" />
+									</sequence>
+								</complexType>
+							</element>
+						</sequence>
+					</complexType>
+				</element>
+				<element name="categories" maxOccurs="1"
+					minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="category"
+								maxOccurs="unbounded">
+								<complexType>
+									<sequence>
+										<element name="ixCategory"
+											type="integer" />
+										<element name="sCategory"
+											type="string" />
+										<element name="sPlural"
+											type="string" />
+										<element name="ixStatusDefault"
+											type="integer" />
+										<element name="fIsScheduleItem"
+											type="boolean" />
+									</sequence>
+								</complexType>
+							</element>
+						</sequence>
+					</complexType>
+				</element>
+				<element name="statuses" maxOccurs="1" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="status" maxOccurs="unbounded"
+								minOccurs="0">
+								<complexType>
+									<sequence>
+										<element name="ixStatus"
+											type="integer" />
+										<element name="sStatus"
+											type="string" />
+										<element name="ixCategory"
+											type="integer" />
+									</sequence>
+								</complexType>
+							</element>
+						</sequence>
+					</complexType>
+				</element>
+				<element name="workingSchedule" maxOccurs="1"
+					minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="ixPerson" type="integer" />
+							<element name="nHoursPerDay" type="integer" />
+							<element name="nWorkdayStarts"
+								type="integer" />
+							<element name="nWorkdayEnds" type="integer" />
+							<element name="fHasLunch" type="boolean" />
+							<element name="nLunchStarts" type="integer" />
+							<element name="hrsLunchLength" type="float" />
+							<element name="dtLastUpdated" type="dateTime" />
+							<element name="rgWorkDays">
+								<complexType>
+									<sequence>
+										<element name="sunday"
+											type="boolean" />
+										<element name="monday"
+											type="boolean" />
+										<element name="tuesday"
+											type="boolean" />
+										<element name="wednesday"
+											type="boolean" />
+										<element name="thursday"
+											type="boolean" />
+										<element name="friday"
+											type="boolean" />
+										<element name="saturday"
+											type="boolean" />
+									</sequence>
+								</complexType>
+							</element>
+						</sequence>
+					</complexType>
+				</element>
+				<element name="intervals" maxOccurs="1" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="interval" maxOccurs="unbounded" minOccurs="0">
+								<complexType>
+									<sequence>
+										<element name="ixBug"
+											type="integer" />
+										<element name="ixInterval"
+											type="integer" />
+										<element name="dtStart"
+											type="dateTime" />
+										<element name="dtEnd"
+											type="dateTime" />
+										<element name="sTitle"
+											type="string" />
+										<element name="ixPerson"
+											type="integer" />
+									</sequence>
+								</complexType>
+							</element>
+						</sequence>
+					</complexType>
+				</element>
+				<element name="people" maxOccurs="1" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="person" maxOccurs="unbounded" minOccurs="0">
+								<complexType>
+									<sequence>
+										<element name="ixPerson"
+											type="integer" />
+										<element name="sFullName"
+											type="string" />
+										<element name="sEmail"
+											type="string" />
+										<element name="sPhone" />
+										<element name="fAdministrator"
+											type="boolean" />
+										<element name="fCommunity"
+											type="boolean" />
+										<element name="fVirtual"
+											type="boolean" />
+										<element name="fDeleted"
+											type="boolean" />
+										<element name="fNotify"
+											type="boolean" />
+										<element name="sHomepage" />
+										<element name="sLocale"
+											type="string" />
+										<element name="sLanguage"
+											type="string" />
+										<element name="sTimeZoneKey"
+											type="string" />
+										<element name="fExpert"
+											type="boolean" />
+									</sequence>
+								</complexType>
+							</element>
+						</sequence>
+					</complexType>
+				</element>				
+				<element name="person" maxOccurs="1" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="ixPerson"
+								type="integer" />
+							<element name="sFullName"
+								type="string" />
+							<element name="sEmail"
+								type="string" />
+							<element name="sPhone" />
+							<element name="fAdministrator"
+								type="boolean" />
+							<element name="fCommunity"
+								type="boolean" />
+							<element name="fVirtual"
+								type="boolean" />
+							<element name="fDeleted"
+								type="boolean" />
+							<element name="fNotify"
+								type="boolean" />
+							<element name="sHomepage" />
+							<element name="sLocale"
+								type="string" />
+							<element name="sLanguage"
+								type="string" />
+							<element name="sTimeZoneKey"
+								type="string" />
+							<element name="fExpert"
+								type="boolean" />
+						</sequence>
+					</complexType>
+				</element>				
+				<element name="topic" maxOccurs="1" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="post"
+								maxOccurs="unbounded">
+								<complexType>
+									<sequence>
+										<element name="ixDiscussTopic"
+											type="integer" />
+										<element
+											name="ixDiscussTopicParent" type="integer" />
+										<element name="sHeadline"
+											type="string" />
+										<element name="sFullName"
+											type="string" />
+										<element name="sURL" />
+										<element name="dt" type="dateTime" />
+										<element name="sPost"
+											type="string" />
+										<element name="fModerator"
+											type="boolean" />
+										<element name="fAuthorized"
+											type="boolean" />
+									</sequence>
+								</complexType>
+							</element>
+						</sequence>
+					</complexType>
+				</element>
+				<element name="discussion" maxOccurs="1"
+					minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="sFullName" type="string" />
+							<element name="sURL" type="string" />
+							<element name="sTagLineHTML" type="string" />
+							<element name="topic"
+								maxOccurs="unbounded">
+								<complexType>
+									<sequence>
+										<element name="post">
+											<complexType>
+												<sequence>
+													<element
+														name="ixDiscussTopic" minOccurs="0" type="integer" />
+													<element
+														name="ixDiscussTopicParent" minOccurs="0" type="integer" />
+													<element
+														name="sHeadline" minOccurs="0" type="string" />
+													<element
+														name="sFullName" minOccurs="0" type="string" />
+													<element name="sURL"
+														minOccurs="0" />
+													<element name="dt"
+														minOccurs="0" type="dateTime" />
+													<element
+														name="sPost" minOccurs="0" type="string" />
+													<element
+														name="fModerator" minOccurs="0" type="boolean" />
+													<element
+														name="fAuthorized" minOccurs="0" type="boolean" />
+												</sequence>
+											</complexType>
+										</element>
+									</sequence>
+								</complexType>
+							</element>
+						</sequence>
+					</complexType>
+				</element>
+				<element name="discussions" maxOccurs="1"
+					minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="discussion">
+								<complexType>
+									<sequence>
+										<element name="sFullName"
+											type="string" />
+										<element name="sURL"
+											type="string" />
+										<element name="sTagLineHTML"
+											type="string" />
+										<element name="ixDiscussGroup"
+											type="integer" />
+									</sequence>
+								</complexType>
+							</element>
+						</sequence>
+					</complexType>
+				</element>
+				<element name="checkins" maxOccurs="1" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="checkin">
+								<complexType>
+									<sequence>
+										<element name="ixCVS"
+											type="integer" />
+										<element name="ixBug"
+											type="integer" />
+										<element name="sFile"
+											type="string" />
+										<element name="sPrev"
+											type="integer" />
+										<element name="sNew"
+											type="integer" />
+										<element name="sRepo" />
+									</sequence>
+								</complexType>
+							</element>
+						</sequence>
+					</complexType>
+				</element>
+				<element name="mailboxes" maxOccurs="1" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="mailbox">
+								<complexType>
+									<sequence>
+										<element name="ixMailbox"
+											type="integer" />
+										<element name="sEmail"
+											type="string" />
+										<element name="sEmailUser"
+											type="string" />
+										<element name="sTemplate"
+											type="string" />
+									</sequence>
+								</complexType>
+							</element>
+						</sequence>
+					</complexType>
+				</element>
+				<element name="settings" maxOccurs="1" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="sTimeZoneKey" type="string" />
+							<element name="nTimeZoneOffset"
+								type="integer" />
+							<element name="cols" type="string" />
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+</schema>

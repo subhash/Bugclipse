@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path=""/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="lib/castor-1.1.2.1-anttasks.jar"/>
+	<classpathentry kind="lib" path="lib/castor-1.1.2.1-codegen.jar"/>
+	<classpathentry kind="lib" path="lib/castor-1.1.2.1-xml.jar"/>
+	<classpathentry kind="lib" path="lib/castor-1.1.2.1.jar"/>
+	<classpathentry kind="lib" path="lib/commons-logging-1.1.jar"/>
+	<classpathentry kind="lib" path="lib/xercesImpl.jar"/>
+	<classpathentry kind="lib" path="C:/Libraries/commons-httpclient-3.0.1/commons-httpclient-3.0.1.jar"/>
+	<classpathentry kind="lib" path="C:/Libraries/commons-codec-1.3/commons-codec-1.3.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

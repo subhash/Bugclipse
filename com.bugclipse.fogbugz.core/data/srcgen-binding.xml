@@ -1,0 +1,54 @@
+<binding xmlns="http://www.castor.org/SourceGenerator/Binding"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.castor.org/SourceGenerator/Binding C:\\Castor\\xsd\\binding.xsd"
+	defaultBinding="element">
+
+	<elementBinding name="/response/cases/case/ixBug">
+		<member name="ixBugElement" />
+	</elementBinding>
+
+	<elementBinding name="/response/events/event/ixBugEvent">
+		<member name="ixBugEventElement" />
+	</elementBinding>
+	
+	<elementBinding name="/response/cases/case/events/event/ixBugEvent">
+		<member name="ixBugEventElement" />
+	</elementBinding>
+
+	<elementBinding name="/response/case">
+		<java-class name="CaseResponse" />
+	</elementBinding>
+
+	<elementBinding name="/response/cases/case/events">
+		<java-class name="EventsContained" />
+	</elementBinding>
+	
+	<elementBinding name="/response/cases/case/events/event">
+		<java-class name="EventContained" />
+	</elementBinding>
+	
+	<elementBinding name="/response/cases/case/events/event/rgAttachments">
+		<java-class name="RgAttachmentsContained" />
+	</elementBinding>
+	
+	<elementBinding name="/response/cases/case/events/event/rgAttachments/attachment">
+		<java-class name="AttachmentContained" />
+	</elementBinding>	
+
+	<elementBinding name="/response/discussions/discussion">
+		<java-class name="DiscussionContained" />
+	</elementBinding>
+
+	<elementBinding name="/response/discussion/topic">
+		<java-class name="TopicContained" />
+	</elementBinding>
+
+	<elementBinding name="/response/discussion/topic/post">
+		<java-class name="PostContained" />
+	</elementBinding>
+
+	<elementBinding name="/response/people/person">
+		<java-class name="PersonContained" />
+	</elementBinding>
+
+</binding>

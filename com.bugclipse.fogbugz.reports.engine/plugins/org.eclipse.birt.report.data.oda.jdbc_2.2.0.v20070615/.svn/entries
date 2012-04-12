@@ -1,0 +1,86 @@
+8
+
+dir
+240
+svn://localhost/Bugclipse/trunk/com.bugclipse.fogbugz.reports.engine/plugins/org.eclipse.birt.report.data.oda.jdbc_2.2.0.v20070615
+svn://localhost
+
+
+
+2007-12-16T10:21:08.031250Z
+232
+subhash
+
+
+svn:special svn:externals svn:needs-lock
+
+META-INF
+dir
+
+schema
+dir
+
+.options
+file
+
+
+
+
+2007-12-16T09:52:30.265625Z
+df3c776a879abebb14c83a4e732de5be
+2007-12-16T10:21:08.031250Z
+232
+subhash
+
+plugin.properties
+file
+
+
+
+
+2007-12-16T09:52:30.796875Z
+69b29282bc9814736533760af371803d
+2007-12-16T10:21:08.031250Z
+232
+subhash
+
+about.html
+file
+
+
+
+
+2007-12-16T09:52:30.265625Z
+a0514a81462cb1bee18bdafb4d9de46b
+2007-12-16T10:21:08.031250Z
+232
+subhash
+
+plugin.xml
+file
+
+
+
+
+2007-12-16T09:52:30.796875Z
+5f0cf1725aa7b31e2c733d35b2d1b04e
+2007-12-16T10:21:08.031250Z
+232
+subhash
+
+drivers
+dir
+
+oda-jdbc.jar
+file
+
+
+
+
+2007-12-16T09:52:30.421875Z
+672b3d8f780f8fd25cfd10f8861ea1d5
+2007-12-16T10:21:08.031250Z
+232
+subhash
+has-props
+

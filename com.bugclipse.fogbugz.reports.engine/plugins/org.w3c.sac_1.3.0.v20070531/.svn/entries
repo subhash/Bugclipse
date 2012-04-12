@@ -1,0 +1,86 @@
+8
+
+dir
+240
+svn://localhost/Bugclipse/trunk/com.bugclipse.fogbugz.reports.engine/plugins/org.w3c.sac_1.3.0.v20070531
+svn://localhost
+
+
+
+2007-12-16T10:21:08.031250Z
+232
+subhash
+
+
+svn:special svn:externals svn:needs-lock
+
+META-INF
+dir
+
+about.properties
+file
+
+
+
+
+2007-12-16T09:52:32.921875Z
+8afc52286d7db4521e94b966d43b7c9b
+2007-12-16T10:21:08.031250Z
+232
+subhash
+
+lib
+dir
+
+about.mappings
+file
+
+
+
+
+2007-12-16T09:52:32.921875Z
+b68ebe09f4cf3e080ed76288675165c4
+2007-12-16T10:21:08.031250Z
+232
+subhash
+
+about.ini
+file
+
+
+
+
+2007-12-16T09:52:32.906250Z
+6a5ec825d8892184c6a3845df420ceed
+2007-12-16T10:21:08.031250Z
+232
+subhash
+
+about_files
+dir
+
+eclipse32.png
+file
+
+
+
+
+2007-12-16T09:52:32.921875Z
+8b69d5ca52163328dfde81c103e25606
+2007-12-16T10:21:08.031250Z
+232
+subhash
+has-props
+
+about.html
+file
+
+
+
+
+2007-12-16T09:52:32.906250Z
+9e7f7fc2f58dc2c6c9f1795c456e9bbf
+2007-12-16T10:21:08.031250Z
+232
+subhash
+

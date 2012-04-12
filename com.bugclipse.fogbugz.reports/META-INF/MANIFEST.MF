@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Bugclipse Reports Plug-in
+Bundle-SymbolicName: com.bugclipse.fogbugz.reports
+Bundle-Version: 1.0.0
+Bundle-Activator: com.bugclipse.fogbugz.reports.Activator
+Bundle-Vendor: Bugclipse
+Bundle-Localization: plugin
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ com.bugclipse.fogbugz.core,
+ com.bugclipse.fogbugz.reports.engine
+Eclipse-LazyStart: true
+Bundle-ClassPath: .
+Export-Package: com.bugclipse.fogbugz.reports

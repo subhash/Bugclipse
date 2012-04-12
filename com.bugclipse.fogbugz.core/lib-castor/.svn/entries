@@ -1,0 +1,68 @@
+8
+
+dir
+307
+svn://localhost/Bugclipse/trunk/com.bugclipse.fogbugz.core/lib-castor
+svn://localhost
+
+
+
+2007-08-25T17:45:35.718750Z
+60
+subhash
+
+
+svn:special svn:externals svn:needs-lock
+
+castor-1.1.2.1-xml.jar
+file
+
+
+
+
+2007-08-24T19:41:32.281250Z
+71cb1d9c2a45ef70349f124a621b2398
+2007-08-25T17:45:35.718750Z
+60
+subhash
+has-props
+
+castor-1.1.2.1.jar
+file
+
+
+
+
+2007-08-24T19:41:32.265625Z
+e540e233a364a054b4225d5ec9198e42
+2007-08-25T17:45:35.718750Z
+60
+subhash
+has-props
+
+castor-1.1.2.1-codegen.jar
+file
+
+
+
+
+2007-08-24T19:41:32.203125Z
+35d1513eb4d347453fd681e635af63de
+2007-08-25T17:45:35.718750Z
+60
+subhash
+has-props
+
+castor-1.1.2.1-anttasks.jar
+file
+
+
+
+
+2007-08-24T19:41:32.187500Z
+e9f3df8954666364b26b88930ca88621
+2007-08-25T17:45:35.718750Z
+60
+subhash
+has-props
+

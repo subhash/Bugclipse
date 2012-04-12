@@ -1,0 +1,52 @@
+8
+
+dir
+277
+svn://localhost/Bugclipse/trunk/com.bugclipse.fogbugz.reports/src/com/bugclipse/fogbugz/reports
+svn://localhost
+
+
+
+2007-12-27T05:39:21.437500Z
+277
+subhash
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+6df6c074-f71b-b44e-839d-296f1544cb4b
+
+Activator.java
+file
+
+
+
+
+2007-11-27T05:50:10.765625Z
+4af13959f19779c8288f4ce43157bebc
+2007-11-28T18:32:36.187500Z
+162
+subhash
+
+ReportLauncher.java
+file
+
+
+
+
+2007-12-27T05:36:47.734375Z
+3f9d423fa1e2865e31d7cd2e0081898e
+2007-12-27T05:39:21.437500Z
+277
+subhash
+

@@ -1,0 +1,40 @@
+8
+
+dir
+307
+svn://localhost/Bugclipse/trunk/com.bugclipse.fogbugz.core/src/com/bugclipse/fogbugz/model
+svn://localhost
+
+
+
+2007-06-19T09:59:59.625000Z
+20
+subhash
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+6df6c074-f71b-b44e-839d-296f1544cb4b
+
+FogBugzFilter.java
+file
+
+
+
+
+2007-08-24T04:25:47.750000Z
+3e49119a3bfb7aebe8e6af3427d0dbf6
+2007-06-19T09:59:59.625000Z
+20
+subhash
+

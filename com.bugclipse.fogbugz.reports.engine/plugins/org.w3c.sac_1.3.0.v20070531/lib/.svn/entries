@@ -1,0 +1,29 @@
+8
+
+dir
+240
+svn://localhost/Bugclipse/trunk/com.bugclipse.fogbugz.reports.engine/plugins/org.w3c.sac_1.3.0.v20070531/lib
+svn://localhost
+
+
+
+2007-12-16T10:21:08.031250Z
+232
+subhash
+
+
+svn:special svn:externals svn:needs-lock
+
+flute.jar
+file
+
+
+
+
+2007-12-16T09:52:33.203125Z
+2f2e13cd3523c545dd1c4617b373692c
+2007-12-16T10:21:08.031250Z
+232
+subhash
+has-props
+

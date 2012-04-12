@@ -1,0 +1,13 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>Bugclipse User Guide</title>
+<link href="../book.css" rel="stylesheet" type="text/css">
+</head>
+
+<body><h1>Bugclipse User Guide</h1><br>Bugclipse is a task manager for
+FogBugz cases, built using the Mylyn framework. It integrates FogBugz
+with Eclipse workbenches and provides rich editing and time tracking
+features.
+<p><a href="gettingstarted/index.html">Getting Started</a></p><p><a href="advancedfeatures/index.html">Advanced Features</a></p><p><a href="mylynconcepts/index.html">Mylyn Concepts</a></p>
+
+
+</body></html>

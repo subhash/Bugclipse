@@ -1,0 +1,402 @@
+package com.bugclipse.fogbugz.api.client;
+
+import java.io.IOException;
+import java.io.StringReader;
+import java.net.HttpURLConnection;
+import java.net.Proxy;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+
+import org.apache.commons.httpclient.Credentials;
+import org.apache.commons.httpclient.HttpClient;
+import org.apache.commons.httpclient.HttpException;
+import org.apache.commons.httpclient.HttpMethod;
+import org.apache.commons.httpclient.HttpStatus;
+import org.apache.commons.httpclient.MultiThreadedHttpConnectionManager;
+import org.apache.commons.httpclient.NameValuePair;
+import org.apache.commons.httpclient.UsernamePasswordCredentials;
+import org.apache.commons.httpclient.auth.AuthScope;
+import org.apache.commons.httpclient.cookie.CookiePolicy;
+import org.apache.commons.httpclient.methods.GetMethod;
+import org.apache.commons.httpclient.methods.PostMethod;
+import org.eclipse.mylyn.web.core.WebClientUtil;
+import org.exolab.castor.xml.MarshalException;
+import org.exolab.castor.xml.Unmarshaller;
+import org.exolab.castor.xml.ValidationException;
+
+import com.bugclipse.fogbugz.api.Area;
+import com.bugclipse.fogbugz.api.Case;
+import com.bugclipse.fogbugz.api.Category;
+import com.bugclipse.fogbugz.api.Filter;
+import com.bugclipse.fogbugz.api.Fixfor;
+import com.bugclipse.fogbugz.api.Person;
+import com.bugclipse.fogbugz.api.PersonContained;
+import com.bugclipse.fogbugz.api.Priority;
+import com.bugclipse.fogbugz.api.Project;
+import com.bugclipse.fogbugz.api.Response;
+import com.bugclipse.fogbugz.core.FogBugzAttributeFactory;
+import com.bugclipse.fogbugz.core.FogBugzAttributeFactory.FogBugzAttribute;
+
+public class FogBugzClient implements IFogBugzClient {
+
+	private HttpClient httpClient;
+
+	private boolean authenticated;
+
+	private String token;
+
+	private String repositoryUrl, username, password;
+
+	private Proxy proxy;
+
+	private static final FogBugzAttributeFactory attributeFactory = new FogBugzAttributeFactory();
+
+	public FogBugzClient(String repositoryUrl, String username,
+			String password, Proxy proxy) {
+		this.repositoryUrl = repositoryUrl;
+		this.username = username;
+		this.password = password;
+		this.proxy = proxy;
+		this.httpClient = new HttpClient();
+		httpClient
+				.setHttpConnectionManager(new MultiThreadedHttpConnectionManager());
+	}
+
+	public Project[] getProjects() throws FogBugzClientException {
+		GetMethod method = connect(repositoryUrl + LIST_PROJECTS_URL);
+		Response response = unmarshalResponse(method);
+		return response.getProjects().getProject();
+	}
+
+	public Filter[] getFilters() throws FogBugzClientException {
+		GetMethod method = connect(repositoryUrl + LIST_FILTERS_URL);
+		Response response = unmarshalResponse(method);
+		return response.getFilters().getFilter();
+	}
+
+	public String[] getOptions(FogBugzAttribute attribute)
+			throws FogBugzClientException {
+		ArrayList<String> options = new ArrayList<String>();
+		if (attribute.equals(FogBugzAttribute.PROJECT)) {
+			Project[] projects = getProjects();
+			for (Project project : projects) {
+				options.add(project.getSProject());
+			}
+		} else if (attribute.equals(FogBugzAttribute.AREA)) {
+			Area[] areas = getAreas();
+			for (Area area : areas) {
+				options.add(area.getSArea());
+			}
+		}
+		return options.toArray(new String[0]);
+	}
+
+	public Case[] getCasesIn(String filterId) throws FogBugzClientException {
+		GetMethod method = connect(repositoryUrl + SET_CURRENT_FILTER_URL
+				+ filterId);
+		method.releaseConnection();
+		String cols = "ixBug,fOpen,sTitle,sLatestTextSummary,sProject,sArea,"
+				+ "ixPersonAssignedTo,sPersonAssignedTo,sEmailAssignedTo,ixStatus,sStatus,"
+				+ "ixPriority,sPriority,ixFixFor,sFixFor,dtFixFor,"
+				+ "sVersion,sComputer,hrsCurrEst,hrsElapsed,ixCategory,sCategory,dtOpened,dtResolved,dtClosed,dtLastUpdated,dtDue,events";
+		method = connect(repositoryUrl + LIST_CASES_URL + "&cols=" + cols);
+		Response response = unmarshalResponse(method);
+		return response.getCases().getCase();
+	}
+
+	public Map<String, Case> getCases(Set<String> caseIds)
+			throws FogBugzClientException {
+		HashMap<String, Case> caseMap = new HashMap<String, Case>();
+		String cols = "ixBug,fOpen,sTitle,sLatestTextSummary,sProject,sArea,"
+				+ "ixPersonAssignedTo,sPersonAssignedTo,sEmailAssignedTo,ixStatus,sStatus,"
+				+ "ixPriority,sPriority,ixFixFor,sFixFor,dtFixFor,"
+				+ "sVersion,sComputer,hrsCurrEst,hrsElapsed,ixCategory,sCategory,dtOpened,dtResolved,dtClosed,dtLastUpdated,dtDue,events";
+		Iterator i = caseIds.iterator();
+		if (i.hasNext()) {
+			String ids = "" + i.next();
+			while (i.hasNext())
+				ids += "," + i.next();
+			GetMethod method = connect(repositoryUrl + LIST_CASES_URL + ids
+					+ "&cols=" + cols);
+			Response response = unmarshalResponse(method);
+			Case[] cases = response.getCases().getCase();
+			for (int j = 0; j < cases.length; j++) {
+				caseMap.put(cases[j].getIxBug() + "", cases[j]);
+			}
+		}
+		return caseMap;
+	}
+
+	public Case getCase(String id) throws FogBugzClientException {
+		Set<String> data = new HashSet<String>();
+		data.add(id);
+		Map<String, Case> returnedData = getCases(data);
+		return returnedData.get(id);
+	}
+
+	public Area[] getAreas() throws FogBugzClientException {
+		GetMethod method = connect(repositoryUrl + LIST_AREAS_URL);
+		Response response = unmarshalResponse(method);
+		return response.getAreas().getArea();
+	}
+
+	public static HashMap<String, ArrayList<Area>> getAreas(Area[] areas) {
+		HashMap<String, ArrayList<Area>> map = new HashMap<String, ArrayList<Area>>();
+		for (Area area : areas) {
+			ArrayList entry = map.get(area.getSProject());
+			if (entry == null) {
+				ArrayList<Area> a = new ArrayList<Area>();
+				a.add(area);
+				map.put(area.getSProject(), a);
+			} else {
+				entry.add(area);
+			}
+		}
+		return map;
+	}
+
+	public ArrayList<String> getAreasInProject(String project)
+			throws FogBugzClientException {
+		ArrayList<Area> areas = getAreas(getAreas()).get(project);
+		ArrayList<String> sAreas = new ArrayList<String>();
+		for (Area area : areas) {
+			sAreas.add(area.getSArea());
+		}
+		return sAreas;
+	}
+
+	public Fixfor[] getFixFors() throws FogBugzClientException {
+		GetMethod method = connect(repositoryUrl + LIST_FIXFORS_URL);
+		Response response = unmarshalResponse(method);
+		return response.getFixfors().getFixfor();
+	}
+
+	public Category[] getCategories() throws FogBugzClientException {
+		GetMethod method = connect(repositoryUrl + LIST_CATEGORIES_URL);
+		Response response = unmarshalResponse(method);
+		return response.getCategories().getCategory();
+	}
+
+	public Priority[] getPriorities() throws FogBugzClientException {
+		GetMethod method = connect(repositoryUrl + LIST_PRIORITIES_URL);
+		Response response = unmarshalResponse(method);
+		return response.getPriorities().getPriority();
+	}
+
+	public PersonContained[] getPeople() throws FogBugzClientException {
+		GetMethod method = connect(repositoryUrl + LIST_PEOPLE_URL);
+		Response response = unmarshalResponse(method);
+		return response.getPeople().getPersonContained();
+	}
+
+	public Person getPerson(String personId) throws FogBugzClientException {
+		GetMethod method = connect(repositoryUrl + VIEW_PERSON_URL + personId);
+		Response response = unmarshalResponse(method);
+		return response.getPerson();
+	}
+
+	public void editCase(String caseId, Map<String, String> changed)
+			throws FogBugzClientException {
+		String url = repositoryUrl + EDIT_CASE_URL + caseId;
+		ArrayList<NameValuePair> nameValues = new ArrayList<NameValuePair>();
+		for (String key : changed.keySet()) {
+			nameValues.add(new NameValuePair(key, changed.get(key)));
+		}
+		PostMethod method = post(url, nameValues.toArray(new NameValuePair[0]));
+		Response response = unmarshalResponse(method);
+		System.out.println(response.getDescription());
+	}
+
+	private synchronized GetMethod connect(String serverURL)
+			throws FogBugzClientException {
+		try {
+			GetMethod m = connectInternal(serverURL);
+			return m;
+		} catch (MarshalException e) {
+			throw new FogBugzClientException(e);
+		} catch (ValidationException e) {
+			throw new FogBugzClientException(e);
+		} catch (HttpException e) {
+			throw new FogBugzClientException(e);
+		} catch (IOException e) {
+			throw new FogBugzClientException(e);
+		}
+	}
+
+	private GetMethod connectInternal(String serverURL)
+			throws MarshalException, ValidationException, HttpException,
+			FogBugzClientException, IOException {
+		WebClientUtil.setupHttpClient(httpClient, proxy, serverURL, null, null);
+
+		for (int attempt = 0; attempt < 2; attempt++) {
+			// force authentication
+			if (!authenticated && hasAuthenticationCredentials()) {
+				authenticate();
+			}
+
+			String requestUrl = WebClientUtil.getRequestPath(serverURL
+					+ "&token=" + token);
+			GetMethod method = new GetMethod(requestUrl);
+			method.getParams().setCookiePolicy(
+					CookiePolicy.BROWSER_COMPATIBILITY);
+			int code;
+			try {
+				code = httpClient.executeMethod(method);
+			} catch (IOException e) {
+				method.releaseConnection();
+				e.printStackTrace();
+				throw e;
+			}
+
+			if (code == HttpURLConnection.HTTP_OK) {
+				return method;
+			} else if (code == HttpURLConnection.HTTP_UNAUTHORIZED
+					|| code == HttpURLConnection.HTTP_FORBIDDEN) {
+				// login or re-authenticate due to an expired session
+				method.releaseConnection();
+				authenticated = false;
+				authenticate();
+			} else {
+				throw new FogBugzClientException("code = " + code);
+			}
+		}
+
+		throw new FogBugzClientException("Session might have expired!");
+	}
+
+	private PostMethod post(String formUrl, NameValuePair[] formData)
+			throws FogBugzClientException {
+		try {
+			return postInternal(formUrl, formData);
+		} catch (MarshalException e) {
+			throw new FogBugzClientException(e);
+		} catch (ValidationException e) {
+			throw new FogBugzClientException(e);
+		} catch (HttpException e) {
+			throw new FogBugzClientException(e);
+		} catch (IOException e) {
+			throw new FogBugzClientException(e);
+		}
+	}
+
+	private PostMethod postInternal(String formUrl, NameValuePair[] formData)
+			throws FogBugzClientException, HttpException, IOException,
+			MarshalException, ValidationException {
+		WebClientUtil.setupHttpClient(httpClient, proxy, formUrl, null, null);
+		if (!authenticated && hasAuthenticationCredentials()) {
+			authenticate();
+		}
+
+		String requestUrl = WebClientUtil.getRequestPath(formUrl + "&token="
+				+ token);
+		System.out.println("Posting to " + requestUrl);
+		PostMethod postMethod = new PostMethod(requestUrl);
+		// postMethod.setRequestHeader("Content-Type",
+		// "application/x-www-form-urlencoded; charset="
+		// + characterEncoding);
+
+		postMethod.setRequestBody(formData);
+		postMethod.setDoAuthentication(true);
+		int status = httpClient.executeMethod(postMethod);
+		if (status == HttpStatus.SC_OK) {
+			return postMethod;
+		} else {
+			postMethod.getResponseBody();
+			postMethod.releaseConnection();
+			throw new IOException(
+					"Communication error occurred during upload. \n\n"
+							+ HttpStatus.getStatusText(status));
+		}
+	}
+
+	protected boolean hasAuthenticationCredentials() {
+		return username != null && username.length() > 0;
+	}
+
+	private void authenticate() throws FogBugzClientException, HttpException,
+			IOException, MarshalException, ValidationException {
+		// WebClientUtil.setupHttpClient(httpClient, proxy, repositoryUrl, null,
+		// null);
+		if (!hasAuthenticationCredentials()) {
+			throw new FogBugzClientException("No authentication credentials!");
+		}
+
+		// try standard basic/digest authentication first
+		Credentials credentials = new UsernamePasswordCredentials(username,
+				password);
+		httpClient.getState().setCredentials(
+				new AuthScope(AuthScope.ANY_HOST, AuthScope.ANY_PORT,
+						AuthScope.ANY_REALM), credentials);
+
+		GetMethod method = new GetMethod(WebClientUtil
+				.getRequestPath(repositoryUrl + "/api.asp?cmd=logon&email="
+						+ username + "&password=" + password));
+		method.setFollowRedirects(false);
+		int code;
+		try {
+			httpClient.getParams().setAuthenticationPreemptive(true);
+			code = httpClient.executeMethod(method);
+			if (code == HttpURLConnection.HTTP_UNAUTHORIZED
+					|| code == HttpURLConnection.HTTP_FORBIDDEN) {
+				throw new FogBugzClientException("Session might have expired!");
+			}
+			authenticated = true;
+			Response r = unmarshalResponse(method);
+			token = r.getToken();
+		} finally {
+			method.releaseConnection();
+			httpClient.getParams().setAuthenticationPreemptive(false);
+		}
+
+		// the expected return code is a redirect, anything else is suspicious
+		if (code == HttpURLConnection.HTTP_OK) {
+			// try form-based authentication via AccountManagerPlugin as a
+			// fall-back
+			// authenticateAccountManager(httpClient);
+		}
+
+		// validateAuthenticationState(httpClient);
+
+		// success since no exception was thrown
+
+	}
+
+	private Response unmarshalResponse(HttpMethod method)
+			throws FogBugzClientException {
+		try {
+			Unmarshaller un = new Unmarshaller(Response.class);
+			un.setIgnoreExtraElements(true);
+			un.setIgnoreExtraAttributes(true);
+			un.setValidation(false);
+			String respBody = method.getResponseBodyAsString();
+			return (Response) un.unmarshal(new StringReader(respBody));
+		} catch (IOException e) {
+			throw new FogBugzClientException(e);
+		} catch (MarshalException e) {
+			throw new FogBugzClientException(e);
+		} catch (ValidationException e) {
+			throw new FogBugzClientException(e);
+		} finally {
+			System.out.println("releasing method connection");
+			method.releaseConnection();
+		}
+	}
+
+	public static void main(String[] args) throws Exception {
+		FogBugzClient client = new FogBugzClient("https://subhash.fogbugz.com",
+				"cs19739@yahoo.com", "cs19739", null);
+		PersonContained[] f = client.getPeople();
+		System.out.println("printing elems - ");
+		for (int i = 0; i < f.length; i++) {
+			System.out
+					.println(f[i].getSFullName() + " - " + f[i].getIxPerson());
+		}
+		Person p = client.getPerson("2");
+		System.out.println(p.getSFullName());
+	}
+
+}

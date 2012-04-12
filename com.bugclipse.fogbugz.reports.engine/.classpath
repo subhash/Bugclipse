@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry exported="true" kind="lib" path="lib/chartengineapi.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/com.ibm.icu_3.6.1.v20070417.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/commons-cli-1.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/commons-codec-1.3.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/coreapi.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/dataadapterapi.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/dteapi.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/engineapi.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/flute.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/itext-1.5.2.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/itextasian-1.5.2.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/js.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/modelapi.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/org.eclipse.emf.common_2.2.1.v200702131851.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/org.eclipse.emf.ecore_2.2.2.v200702131851.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/org.eclipse.emf.ecore.xmi_2.2.2.v200702131851.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/org.w3c.css.sac_1.3.0.v200706111724.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/scriptapi.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

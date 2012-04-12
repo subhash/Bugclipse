@@ -1,0 +1,25 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>Activation and deactivation of a task</title>
+<link href="../../book.css" rel="stylesheet" type="text/css">
+</head>
+
+<body><h1>Tracking time for a task</h1>
+<br><ul><li>A task can be activated by clicking on the activation
+button in the task list or task editor. Doing so turns on the <span style="font-weight: bold;">Working
+On</span> attribute in the FogBugz repository to point to the current task.
+Similarly, deactivation of task informs the repository to stop tracking
+time for the case. This facility is greatly useful while tracking time
+spent using FogBugz.</li></ul><p>
+
+<img src="TaskActivation.gif"></p><br><ul><li>Activating a task can also turn on the
+focused context (See&nbsp;<a href="Context%20attachment.html">Context attachment</a>).
+Deactivating a task can result in editors being closed. To change these
+default options, please use the preference page Window -&gt;
+Preferences -&gt; Mylyn -&gt; Context<br></li><li>When a task is
+active, the <span style="font-weight: bold;">focused context</span> shows only the part of the code that is relevant to the active task. This can help focus on the task at hand.</li></ul><p>
+<img src="FocusedContext.gif"></p>
+
+
+
+
+</body></html>

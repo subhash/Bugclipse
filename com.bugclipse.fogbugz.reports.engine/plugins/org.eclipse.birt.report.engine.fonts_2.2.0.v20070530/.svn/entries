@@ -1,0 +1,67 @@
+8
+
+dir
+240
+svn://localhost/Bugclipse/trunk/com.bugclipse.fogbugz.reports.engine/plugins/org.eclipse.birt.report.engine.fonts_2.2.0.v20070530
+svn://localhost
+
+
+
+2007-12-16T10:21:08.031250Z
+232
+subhash
+
+
+svn:special svn:externals svn:needs-lock
+
+fontsConfig_Windows_XP.xml
+file
+
+
+
+
+2007-12-16T09:52:31.203125Z
+80324ed4406fc3da4b072b63adc6baa7
+2007-12-16T10:21:08.031250Z
+232
+subhash
+
+META-INF
+dir
+
+fontsConfig_postscript.xml
+file
+
+
+
+
+2007-12-16T09:52:31.203125Z
+f590175a4e569fd95ef94760f581f15f
+2007-12-16T10:21:08.031250Z
+232
+subhash
+
+about.html
+file
+
+
+
+
+2007-12-16T09:52:31.109375Z
+a0514a81462cb1bee18bdafb4d9de46b
+2007-12-16T10:21:08.031250Z
+232
+subhash
+
+fontsConfig.xml
+file
+
+
+
+
+2007-12-16T09:52:31.125000Z
+1cd22b97fbf87eb04a8431da88d61bc9
+2007-12-16T10:21:08.031250Z
+232
+subhash
+

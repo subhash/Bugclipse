@@ -1,0 +1,52 @@
+8
+
+dir
+320
+svn://localhost/Bugclipse/trunk/com.bugclipse.fogbugz.ui/src/com/bugclipse/fogbugz/ui/menu
+svn://localhost
+
+
+
+2007-12-27T04:49:26.000000Z
+272
+subhash
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+6df6c074-f71b-b44e-839d-296f1544cb4b
+
+CaseReportMenuContributor.java
+file
+
+
+
+
+2007-12-27T04:49:03.187500Z
+ff2eddd1518fab7778eb303c1ca7d557
+2007-12-27T04:49:26.000000Z
+272
+subhash
+
+TimeSheetMenuContributor.java
+file
+
+
+
+
+2007-12-27T04:48:52.656250Z
+677d31134ebfc3ba77b518fe5ec2dbc1
+2007-12-27T04:49:26.000000Z
+272
+subhash
+

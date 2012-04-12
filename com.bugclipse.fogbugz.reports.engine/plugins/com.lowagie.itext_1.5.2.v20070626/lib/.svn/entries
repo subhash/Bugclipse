@@ -1,0 +1,42 @@
+8
+
+dir
+240
+svn://localhost/Bugclipse/trunk/com.bugclipse.fogbugz.reports.engine/plugins/com.lowagie.itext_1.5.2.v20070626/lib
+svn://localhost
+
+
+
+2007-12-16T10:21:08.031250Z
+232
+subhash
+
+
+svn:special svn:externals svn:needs-lock
+
+itextasian-1.5.2.jar
+file
+
+
+
+
+2007-12-16T09:52:29.390625Z
+2d3bf9a14efd04179be01ccd4dd544af
+2007-12-16T10:21:08.031250Z
+232
+subhash
+has-props
+
+itext-1.5.2.jar
+file
+
+
+
+
+2007-12-16T09:52:29.375000Z
+96ec0331c882cb79639a767bc2c5c635
+2007-12-16T10:21:08.031250Z
+232
+subhash
+has-props
+

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.help.toc">
+      <toc
+            file="toc.xml"
+            primary="true">
+      </toc>
+      <toc
+            file="toc_gettingstarted.xml"
+            primary="false">
+      </toc>
+   </extension>
+   <extension
+         point="org.eclipse.help.toc">
+      <toc
+            extradir=""
+            file="toc_advancedfeatures.xml"
+            primary="false">
+      </toc>
+   </extension>
+   <extension
+         point="org.eclipse.help.toc">
+      <toc
+            extradir=""
+            file="toc_mylynconcepts.xml"
+            primary="false">
+      </toc>
+   </extension>
+
+</plugin>

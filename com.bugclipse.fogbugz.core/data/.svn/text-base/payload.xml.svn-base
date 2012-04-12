@@ -1,0 +1,516 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<response>
+	<version>2</version>
+	<minversion>1</minversion>
+	<url>api.asp?</url>
+
+	<error code="1">Error Message To Show User</error>
+
+	<filters>
+		<filter type="builtin" sFilter="ez349">My Cases</filter>
+		<filter type="saved" sFilter="304">
+			Cases I should have closed months ago
+		</filter>
+		<filter type="shared" sFilter="98" status="current">
+			Customer Service Top 10
+		</filter>
+	</filters>
+
+	<description>
+		All open cases in SnooDog with the status of Active that must be
+		fixed for SnooDog Beta 1: 1/1/2007
+	</description>
+	
+	<cases count="1">
+		-- count is included in the cases attribute
+		<case ixBug="123"
+			operations="edit,assign,resolve,reactivate,close,reopen,reply,forward,email,move,spam,remind">
+			-- note: currently move, spam, and remind are not supported
+			actions. Older version of the API which call -- the
+			deprecated cmd=list (instead of cmd=search&amp;q=) will not
+			see reply, forward, or email operations -- in the case
+			listing
+
+			<ixBug>123</ixBug>
+			-- case number
+			<fOpen>true</fOpen>
+			-- true if open, false if closed
+			<sTitle>Duck, Duck... but No Goose!</sTitle>
+			-- title
+			<sLatestTextSummary>
+				I searched the docs, but no goose!
+			</sLatestTextSummary>
+			-- short string with case's latest comment
+			<ixBugEventLatestText>1151</ixBugEventLatestText>
+			-- ixBugEvent for latest event with actual text comment
+			<ixProject>22</ixProject>
+			-- project id
+			<sProject>The Farm</sProject>
+			-- project name
+			<ixArea>35</ixArea>
+			-- area id
+			<sArea>Pond</sArea>
+			-- area name
+			<ixGroup>6</ixGroup>
+			-- group id
+			<ixPersonAssignedTo>1</ixPersonAssignedTo>
+			-- person case is assigned to (id)
+			<sPersonAssignedTo>Old MacDonald</sPersonAssignedTo>
+			-- person case is assigned to (name)
+			<sEmailAssignedTo>
+				grandpa@oldmacdonald.com
+			</sEmailAssignedTo>
+			-- email of person case is assigned to
+			<ixPersonOpenedBy>2</ixPersonOpenedBy>
+			-- person case was opened by (id)
+			<ixPersonResolvedBy>2</ixPersonResolvedBy>
+			-- person case was resolved by (id)
+			<ixPersonClosedBy></ixPersonClosedBy>
+			-- person case was closed by (id)
+			<ixPersonLastEditedBy>0</ixPersonLastEditedBy>
+			-- person case was last edited by (id)
+			<ixStatus>2</ixStatus>
+			-- status (id)
+			<sStatus>Geschlossen (Fixed)</sStatus>
+			-- status (name)
+			<ixPriority>3</ixPriority>
+			-- priority (id)
+			<sPriority>Must Fix</sPriority>
+			-- priority (name)
+			<ixFixFor>3</ixFixFor>
+			-- fixfor (id)
+			<sFixFor>Test</sFixFor>
+			-- fixfor (name)
+			<dtFixFor>2007-05-06T22:47:59Z</dtFixFor>
+			-- date of fixfor (date)
+			<sVersion></sVersion>
+			-- version field (custom field #1)
+			<sComputer></sComputer>
+			-- computer field (custom field #2)
+			<hrsOrigEst>0</hrsOrigEst>
+			-- hours of original estimate (0 if no estimate)
+			<hrsCurrEst>0</hrsCurrEst>
+			-- hours of current estimate
+			<hrsElapsed>0</hrsElapsed>
+			-- total elapsed hours
+			<c>0</c>
+			-- number of occurrences (minus 1) of this bug (increased
+			via bugzscout) -- to display the actual number of
+			occurrences, add 1 to this number
+			<sCustomerEmail></sCustomerEmail>
+			-- if there is a customer contact for this case, this is
+			their email
+			<ixMailbox>0</ixMailbox>
+			-- if this case came in via dispatcho, the mailbox it came
+			in on
+			<ixCategory>1</ixCategory>
+			-- category (id)
+			<sCategory>Feature</sCategory>
+			-- category (name)
+			<dtOpened>2007-05-06T22:47:59Z</dtOpened>
+			-- date case was opened
+			<dtResolved>2007-05-06T22:47:59Z</dtResolved>
+			-- date case was resolved
+			<dtClosed>2007-05-06T22:47:59Z</dtClosed>
+			-- date case was closed
+			<ixBugEventLatest>1151</ixBugEventLatest>
+			-- latest bugevent
+			<dtLastUpdated>2007-05-06T22:47:59Z</dtLastUpdated>
+			-- the date when this case was last updated
+			<fReplied>false</fReplied>
+			-- has this case been replied to?
+			<fForwarded>false</fForwarded>
+			-- has this case been forwarded?
+			<sTicket></sTicket>
+			-- id for customer to view bug (bug number + 8 letters e.g.
+			4003_XFLFFFCS)
+			<ixDiscussTopic>0</ixDiscussTopic>
+			-- id of discussion topic if case is related
+			<dtDue></dtDue>
+			-- date this case is due (empty if no due date)
+			<sReleaseNotes></sReleaseNotes>
+			-- release notes
+			<ixBugEventLastView>1151</ixBugEventLastView>
+			-- the ixBugEventLatest when you last viewed this case
+			<dtLastView>2007-05-06T22:47:59Z</dtLastView>
+			-- the date when you last viewed this case
+			<ixRelatedBugs>345,267,2920</ixRelatedBugs>
+			-- comma separated list of other related case numbers
+			<sScoutDescription>Main.cpp:165</sScoutDescription>
+			-- if this case is a Scout case, this ID is the unique
+			identifier
+			<sScoutMessage>
+				Please contact us or visit our knowledge base to
+				resolve.
+			</sScoutMessage>
+			-- this is the message -- displayed to users when they
+			submit a case that matches this sScoutDescription
+			<fScoutStopReporting>false</fScoutStopReporting>
+			-- whether we are still recording occurrences of this crash
+			or not
+			<fSubscribed>true</fSubscribed>
+			-- true if you are subscribed to this case, otherwise false
+
+		</case>
+	</cases>
+
+	<events>
+		<event ixBugEvent="174" ixBug="13">
+
+			<ixBugEvent>174</ixBugEvent>
+			-- Identity field in the database for this event
+			<evt>4</evt>
+			-- Number for type of event, see event codes
+			<sVerb>Assigned to Captain Caveman</sVerb>
+			-- Description of event in English always
+			<ixPerson>3</ixPerson>
+			-- Identity field of the person who made this event happen
+			<sPerson>Mikey</sPerson>
+			-- Person's full name
+			<dt>2007-05-06T22:47:59Z</dt>
+			-- Date event happened (in RFC822 UTC format)
+			<s>Up up and away!</s>
+			-- The text of the event (if this is an email, this is a
+			simple view of the message)
+			<bEmail>false</bEmail>
+			-- True if it is an email event
+			<bExternal>false</bExternal>
+			-- True if this case was created via an incoming email,
+			discussion topic, or BugzScout
+			<sChanges>Project changed from 'Inbox' to 'Cave'.</sChanges>
+			-- Description of changes to the case during this event
+			<evtDescription>
+				Captain Caveman von Mikey zugewiesen
+			</evtDescription>
+			-- Description of event in YOUR language (in this case
+			German)
+
+			<rgAttachments>
+				<attachment>
+					<sFileName>Test Word.doc</sFileName>
+					-- name of the attached file
+					<sURL>
+						default.asp?pg=pgDownload&amp;pgType=pgAttachment&amp;ixBugEvent=756&amp;sPart=2&amp;sTicket=&amp;sFileName=Test%20Word.doc
+					</sURL>
+					-- url to hit to get the contents of the attached
+					file (add on token= yourtoken)
+				</attachment>
+			</rgAttachments>
+
+			-- if the event is an email (bEmail == true) then there are
+			additional fields --
+
+			<sFrom>"JJ Walker" &lt;jj @ dynomite.org&gt;</sFrom>
+			-- the from header from the message
+			<sTo>good@times.org</sTo>
+			-- the to header from the message
+			<sCC></sCC>
+			-- the cc header from the message
+			<sBCC></sBCC>
+			-- the bcc header from the message (if readable)
+			<sReplyTo></sReplyTo>
+			-- the replyto header from the message
+			<sSubject></sSubject>
+			-- the subject header from the message
+			<sDate>5 Jun 07 21:07:54 GMT</sDate>
+			-- the date header from the message (exactly as it appears
+			usually rfc822 date)
+			<sBodyText></sBodyText>
+			-- the body plaintext from the message
+			<sBodyHTML></sBodyHTML>
+			-- the message formatted in html
+
+		</event>
+	</events>
+
+	<projects>
+		<project>
+			<ixProject>68</ixProject>
+			-- project id
+			<sProject>The Farm</sProject>
+			-- project name
+			<ixPersonOwner>6</ixPersonOwner>
+			-- person who is the default owner for this project (id)
+			<sPersonOwner>Old MacDonald</sPersonOwner>
+			-- name of owner
+			<sEmail>grandpa@oldmacdonald.com</sEmail>
+			-- email of owner
+			<sPhone>555-294-4778</sPhone>
+			-- phone of owner
+			<fInbox>false</fInbox>
+			-- true if this is the Inbox project
+			<iType>1</iType>
+			-- type of group this project is part of (1 = client / 2 =
+			dept)
+			<ixGroup>1</ixGroup>
+			-- group (id) this project is part of
+			<sGroup>Internal</sGroup>
+			-- name of group this project is part of
+		</project>
+	</projects>
+
+
+
+	<areas>
+		<area>
+			<ixArea>53</ixArea>
+			-- area id
+			<sArea>Bug</sArea>
+			-- area name
+			<ixProject>23</ixProject>
+			-- project (id) this area belongs to
+			<sProject>Antioch, CA</sProject>
+			-- project (name) this area belongs to
+			<ixPersonOwner></ixPersonOwner>
+			-- default owner of this area. if empty then use project
+			owner
+			<sPersonOwner></sPersonOwner>
+			-- name of owner of this area. if empty then use project
+			owner
+			<nType>0</nType>
+			-- type of area: 0 = normal, 1 = Not Spam, 2 = Undecided, 3
+			= Spam (Inbox areas only)
+			<cDoc>0</cDoc>
+			-- number of documents trained into area (autosorted areas
+			only)
+		</area>
+	</areas>
+
+
+	<priorities>
+		<priority>
+			<ixPriority>1</ixPriority>
+			-- priority id
+			<sPriority>Very Urgent</sPriority>
+			-- priority name
+		</priority>
+		<priority>
+			<ixPriority>2</ixPriority>
+			<sPriority>Urgent</sPriority>
+		</priority>
+		<priority>
+			<ixPriority>2</ixPriority>
+			-- priority id
+			<sPriority>Very Urgent</sPriority>
+			-- priority name
+		</priority>
+		<priority>
+			<ixPriority>2</ixPriority>
+			<sPriority>Urgent</sPriority>
+		</priority>
+	</priorities>
+
+
+	<categories>
+		<category>
+			<ixCategory>1</ixCategory>
+			-- category id
+			<sCategory>Bug</sCategory>
+			-- category name
+			<sPlural>Bugs</sPlural>
+			-- category plural name
+			<ixStatusDefault>2</ixStatusDefault>
+			-- when a case of this category type is resolved, the status
+			id of the default (selected) status
+			<fIsScheduleItem>false</fIsScheduleItem>
+			-- true if this is a schedule item category
+		</category>
+		<category>
+			<ixCategory>2</ixCategory>
+			<sCategory>Feature</sCategory>
+			<sPlural>Features</sPlural>
+			<ixStatusDefault>8</ixStatusDefault>
+			<fIsScheduleItem>false</fIsScheduleItem>
+		</category>
+	</categories>
+
+
+	<workingSchedule>
+		<ixPerson>2</ixPerson>
+		-- person owner (id) of this schedule
+		<nHoursPerDay>8</nHoursPerDay>
+		-- hrs of day that are actually devoted to work
+		<nWorkdayStarts>9</nWorkdayStarts>
+		-- military hour that workday starts 9am = 9 / 5pm = 17
+		<nWorkdayEnds>17</nWorkdayEnds>
+		-- military hour that workday ends 9am = 9 / 5pm = 17
+		<fHasLunch>true</fHasLunch>
+		-- whether there is time off for lunch
+		<nLunchStarts>12</nLunchStarts>
+		-- military hour that lunch starts
+		<hrsLunchLength>0.5</hrsLunchLength>
+		-- hours long that lunch lasts
+		<dtLastUpdated>2007-05-06T22:39:31Z</dtLastUpdated>
+		-- the date these values were last changed
+		<rgWorkDays>
+			-- if value is true, then it is considered a workday
+			<sunday>false</sunday>
+			<monday>true</monday>
+			<tuesday>true</tuesday>
+			<wednesday>true</wednesday>
+			<thursday>true</thursday>
+			<friday>true</friday>
+			<saturday>false</saturday>
+		</rgWorkDays>
+	</workingSchedule>
+
+
+	<intervals>
+		<interval>
+			<ixBug>2</ixBug>
+			-- case id for this interval
+			<ixInterval>8</ixInterval>
+			-- interval (id)
+			<dtStart>9</dtStart>
+			-- start time of interval
+			<dtEnd>17</dtEnd>
+			-- end time of interval
+			<sTitle>1</sTitle>
+			-- title of case
+			<ixPerson>12</ixPerson>
+			-- person this interval applies to
+		</interval>
+	</intervals>
+
+
+	<people>
+		<person>
+			<ixPerson>11</ixPerson>
+			-- person (id)
+			<sFullName>Old MacDonald</sFullName>
+			-- person name
+			<sEmail>grandpa@oldmacdonald.com</sEmail>
+			-- person email
+			<sPhone></sPhone>
+			-- person phone
+			<fAdministrator>false</fAdministrator>
+			-- true if user is a site admin
+			<fCommunity>false</fCommunity>
+			-- true if user is a community user
+			<fVirtual>false</fVirtual>
+			-- true if user is a virtual user
+			<fDeleted>false</fDeleted>
+			-- true if account is inactive
+			<fNotify>true</fNotify>
+			-- true if user receives email notifications
+			<sHomepage></sHomepage>
+			-- homepage url
+			<sLocale>en-us</sLocale>
+			-- The locale code for the date/number language (i.e.,
+			"en-us") ( "*" means use browser format )
+			<sLanguage>en-us</sLanguage>
+			-- The locale code for the UI language (i.e., "en-us") ( "*"
+			means use browser format )
+			<sTimeZoneKey>Eastern Standard Time</sTimeZoneKey>
+			-- A key that defines the time zone setting for this
+			person's account (i.e., "Eastern Standard Time"). The values
+			for this setting are operating system dependent. ( "*" means
+			use fogbugz default )
+			<fExpert>false</fExpert>
+			-- No longer used
+		</person>
+		<person>Fred Astaire</person>
+		<person>John Hancock</person>
+	</people>
+
+
+	<topic>
+		<post>
+			<ixDiscussTopic>2</ixDiscussTopic>
+			<ixDiscussTopicParent>0</ixDiscussTopicParent>
+			<sHeadline>test headline</sHeadline>
+			<sFullName>fogtest</sFullName>
+			<sURL />
+			<dt>2007-06-25T20:24:50Z</dt>
+			<sPost>message</sPost>
+			<fModerator>true</fModerator>
+			<fAuthorized>true</fAuthorized>
+		</post>
+		<post>
+			<ixDiscussTopic>3</ixDiscussTopic>
+			<ixDiscussTopicParent>2</ixDiscussTopicParent>
+			<sHeadline>test headline</sHeadline>
+			<sFullName>fogtest</sFullName>
+			<sURL />
+			<dt>2007-06-25T20:39:30Z</dt>
+			<sPost>another message</sPost>
+			<fModerator>true</fModerator>
+			<fAuthorized>true</fAuthorized>
+		</post>
+	</topic>
+
+
+	<discussion>
+		<sFullName>test</sFullName>
+		<sURL>http://localhost/fb/?test</sURL>
+		<sTagLineHTML>test</sTagLineHTML>
+		<topic>
+			<post>
+				<ixDiscussTopic>4</ixDiscussTopic>
+				<ixDiscussTopicParent>0</ixDiscussTopicParent>
+				<sHeadline>a second topic</sHeadline>
+				<sFullName>fogtest</sFullName>
+				<sURL />
+				<dt>2007-06-25T20:39:47Z</dt>
+				<sPost>new topic message</sPost>
+				<fModerator>true</fModerator>
+				<fAuthorized>true</fAuthorized>
+			</post>
+		</topic>
+		<topic>
+			<post></post>
+		</topic>
+	</discussion>
+
+
+	<discussions>
+		<discussion>
+			<sFullName>test</sFullName>
+			<sURL>http://localhost/fb/?test</sURL>
+			<sTagLineHTML>test</sTagLineHTML>
+			<ixDiscussGroup>1</ixDiscussGroup>
+		</discussion>
+	</discussions>
+
+
+	<checkins>
+		<checkin>
+			<ixCVS>28444</ixCVS>
+			<ixBug>403416</ixBug>
+			<sFile>trunk/fogcreek/FogBugz/Website/snippet.js</sFile>
+			<sPrev>0</sPrev>
+			<sNew>22878</sNew>
+			<sRepo />
+		</checkin>
+	</checkins>
+
+
+	<mailboxes>
+		<mailbox>
+			<ixMailbox>1</ixMailbox>
+			<sEmail>
+				"customer support" &lt;customer@company.com&gt;
+			</sEmail>
+			-- the email address from mailbox settings
+			<sEmailUser>
+				"Jonas Jalopy" &lt;customer@company.com&gt;
+			</sEmailUser>
+			-- the "personal" email address with your name
+			<sTemplate>-- Sincerely, Customer Service</sTemplate>
+			-- the automatic message reply text or "signature"
+		</mailbox>
+	</mailboxes>
+
+
+	<settings>
+		<sTimeZoneKey>Eastern Standard Time</sTimeZoneKey>
+		-- this user's time zone
+		<nTimeZoneOffset>-14400</nTimeZoneOffset>
+		-- offset in seconds from UTC for this user
+		<cols>
+			sCategory,ixBug,sLatestTextSummary,sStatus,ixPersonOpenedBy,sPriority
+		</cols>
+		-- an approximation of the columns in the user's current filter
+	</settings>
+
+</response>

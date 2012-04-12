@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?NLS TYPE="org.eclipse.help.toc"?>
+<toc label="Getting Started" topic="html/gettingstarted/index.html">
+   <topic href="html/gettingstarted/Creating New FogBugz Task Repository.html" label="Creating New FogBugz Task Repository"/>
+   <topic href="html/gettingstarted/Creating New FogBugz Query.html" label="Creating New FogBugz Query">
+   </topic>
+   <topic href="html/gettingstarted/Working with the Task List.html" label="Working with the Task List"/>
+   <topic href="html/gettingstarted/Rich Editor.html" label="Rich Editor"/>
+</toc>

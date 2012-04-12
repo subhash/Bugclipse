@@ -1,0 +1,279 @@
+package com.bugclipse.fogbugz.ui.actions;
+
+import java.io.File;
+import java.lang.reflect.InvocationTargetException;
+import java.net.MalformedURLException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.TimeZone;
+
+import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.jface.action.Action;
+import org.eclipse.jface.dialogs.Dialog;
+import org.eclipse.jface.dialogs.ProgressMonitorDialog;
+import org.eclipse.jface.operation.IRunnableWithProgress;
+import org.eclipse.jface.viewers.ISelection;
+import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.mylyn.internal.tasks.ui.views.TaskListView;
+import org.eclipse.mylyn.tasks.core.AbstractRepositoryQuery;
+import org.eclipse.mylyn.tasks.core.AbstractTask;
+import org.eclipse.mylyn.tasks.core.AbstractTaskContainer;
+import org.eclipse.mylyn.tasks.ui.TasksUiPlugin;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.ui.PartInitException;
+import org.eclipse.ui.PlatformUI;
+
+import com.bugclipse.fogbugz.api.Interval;
+import com.bugclipse.fogbugz.api.client.FogBugzClient;
+import com.bugclipse.fogbugz.api.exception.FogBugzClientException;
+import com.bugclipse.fogbugz.core.FogBugzRepositoryConnector;
+import com.bugclipse.fogbugz.core.FogBugzTask;
+import com.bugclipse.fogbugz.core.IFogBugzConstants;
+import com.bugclipse.fogbugz.core.IFogBugzConstants.TimesheetFormat;
+import com.bugclipse.fogbugz.reports.ReportLauncher;
+import com.bugclipse.fogbugz.ui.dialog.TimesheetParametersDialog;
+
+public class RunReportAction extends Action {
+
+	TimesheetFormat format;
+
+	String reportFilename = IFogBugzConstants.REPORT_TIMESHEET;
+
+<<<<<<< .mine
+	// TODO Shenuja Pass correct report filename
+	public RunReportAction(String label, String format) {
+=======
+	public RunReportAction(TimesheetFormat format) {
+>>>>>>> .r185
+		super();
+		this.setText(format.getLabel());
+		this.format = format;
+	}
+
+	@Override
+	public void run() {
+		if (TaskListView.getFromActivePerspective() != null) {
+			ISelection selection = TaskListView.getFromActivePerspective()
+					.getViewer().getSelection();
+			if (reportFilename.equals(IFogBugzConstants.REPORT_TIMESHEET))
+				runTimesheetReport(selection);
+			if (reportFilename.equals(IFogBugzConstants.REPORT_CASELIST))
+				runCaselistReport(selection);
+		}
+	}
+
+	private void runTimesheetReport(ISelection selection) {
+		String repo = "", repoUrl = "";
+		for (Object obj : ((IStructuredSelection) selection).toList()) {
+			if (obj instanceof AbstractRepositoryQuery) {
+				AbstractRepositoryQuery q = (AbstractRepositoryQuery) obj;
+				repo = q.getRepositoryKind();
+				repoUrl = q.getRepositoryUrl();
+				break;
+			}
+			if (obj instanceof AbstractTask) {
+				AbstractTask t = (AbstractTask) obj;
+				repo = t.getConnectorKind();
+				repoUrl = t.getRepositoryUrl();
+				break;
+			}
+			if (obj instanceof AbstractTaskContainer) {
+				AbstractTaskContainer c = (AbstractTaskContainer) obj;
+				for (AbstractTask t : c.getChildren()) {
+					repo = t.getConnectorKind();
+					repoUrl = t.getRepositoryUrl();
+					break;
+				}
+			}
+		}
+		if (!repo.equals("")) {
+			TimesheetParametersDialog parametersDialog = new TimesheetParametersDialog(
+					Display.getDefault().getActiveShell(), format
+							.getFileExtension());
+			if (parametersDialog.open() == Dialog.CANCEL)
+				return;
+			// String from = "11/27/06 7:25 PM", to = "12/27/07 7:25 PM";
+			SimpleDateFormat f = new SimpleDateFormat();
+			f.setTimeZone(TimeZone.getTimeZone("GMT"));
+			final String from = f.format(parametersDialog.getFromDate());
+			final String to = f.format(parametersDialog.getToDate());
+			final String filename = parametersDialog.getFileLocation();
+
+			FogBugzRepositoryConnector conn = (FogBugzRepositoryConnector) TasksUiPlugin
+					.getRepositoryManager().getRepositoryConnector(repo);
+			final FogBugzClient client = conn.getClientManager()
+					.getClient(
+							TasksUiPlugin.getRepositoryManager().getRepository(
+									repoUrl));
+
+			try {
+				ProgressMonitorDialog dialog = new ProgressMonitorDialog(null);
+				dialog.run(true, true, new IRunnableWithProgress() {
+					public void run(IProgressMonitor monitor)
+							throws InvocationTargetException,
+							InterruptedException {
+						try {
+							monitor.beginTask("Retrieving intervals",
+									IProgressMonitor.UNKNOWN);
+							Map<String, Object> scriptable = new HashMap<String, Object>();
+							Interval[] in = client.getIntervals(from, to,
+									monitor);
+							scriptable.put("Intervals", in);
+							monitor.worked(1);
+							if (monitor.isCanceled())
+								return;
+
+							monitor.beginTask("Generating the report",
+									IProgressMonitor.UNKNOWN);
+							ReportLauncher.runReport(scriptable,
+									reportFilename, filename, format
+											.getBirtConstant(), monitor);
+							monitor.worked(1);
+							if (monitor.isCanceled())
+								return;
+
+						} catch (FogBugzClientException e) {
+							monitor.setCanceled(true);
+							e.printStackTrace();
+						} finally {
+							monitor.done();
+						}
+					}
+				});
+				if (!dialog.getProgressMonitor().isCanceled()) {
+					try {
+						PlatformUI.getWorkbench().getBrowserSupport()
+								.createBrowser("Timesheet").openURL(
+										new File(filename).toURL());
+					} catch (PartInitException e) {
+						e.printStackTrace();
+					} catch (MalformedURLException e) {
+						e.printStackTrace();
+					}
+				}
+			} catch (InvocationTargetException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}
+
+	private void runCaselistReport(ISelection selection) {
+		ArrayList<FogBugzTask> tasks = new ArrayList<FogBugzTask>();
+		for (Object obj : ((IStructuredSelection) selection).toList()) {
+			if (obj instanceof FogBugzTask) {
+				FogBugzTask ft = (FogBugzTask) obj;
+				tasks.add(ft);				
+			}
+			if (obj instanceof AbstractRepositoryQuery) {
+				AbstractRepositoryQuery q = (AbstractRepositoryQuery) obj;
+				for (AbstractTask task : q.getChildren()) {
+					if (task instanceof FogBugzTask) {
+						FogBugzTask f = (FogBugzTask) task;
+						tasks.add(f);
+					}
+				}				
+			}
+		}
+<<<<<<< .mine
+		// TODO Shenuja Popup dialog here
+		String filename = "c:/temp/see.html";
+		Map<String, Object> scriptable = new HashMap<String, Object>();
+		scriptable.put("Tasks", tasks.toArray(new FogBugzTask[0]));
+		ReportLauncher.runReport(scriptable, reportFilename,
+				filename, format, new NullProgressMonitor());
+=======
+		if (!repo.equals("")) {
+			TimesheetParametersDialog parametersDialog = new TimesheetParametersDialog(
+					Display.getDefault().getActiveShell(), format
+							.getFileExtension());
+			if (parametersDialog.open() == Dialog.CANCEL)
+				return;
+			// String from = "11/27/06 7:25 PM", to = "12/27/07 7:25 PM";
+			SimpleDateFormat f = new SimpleDateFormat();
+			f.setTimeZone(TimeZone.getTimeZone("GMT"));
+			final String from = f.format(parametersDialog.getFromDate());
+			final String to = f.format(parametersDialog.getToDate());
+			final String filename = parametersDialog.getFileLocation();
+>>>>>>> .r185
+
+<<<<<<< .mine
+		try {
+			PlatformUI.getWorkbench().getBrowserSupport()
+					.createBrowser("Case List").openURL(
+							new File(filename).toURL());
+		} catch (PartInitException e) {
+			e.printStackTrace();
+		} catch (MalformedURLException e) {
+			e.printStackTrace();
+=======
+			FogBugzRepositoryConnector conn = (FogBugzRepositoryConnector) TasksUiPlugin
+					.getRepositoryManager().getRepositoryConnector(repo);
+			final FogBugzClient client = conn.getClientManager()
+					.getClient(
+							TasksUiPlugin.getRepositoryManager().getRepository(
+									repoUrl));
+
+			try {
+				ProgressMonitorDialog dialog = new ProgressMonitorDialog(null);
+				dialog.run(true, true, new IRunnableWithProgress() {
+					public void run(IProgressMonitor monitor)
+							throws InvocationTargetException,
+							InterruptedException {
+						try {
+							monitor.beginTask("Retrieving intervals",
+									IProgressMonitor.UNKNOWN);
+							Map<String, Object> scriptable = new HashMap<String, Object>();
+							Interval[] in = client.getIntervals(from, to,
+									monitor);
+							scriptable.put("Intervals", in);
+							monitor.worked(1);
+							if (monitor.isCanceled())
+								return;
+
+							monitor.beginTask("Generating the report",
+									IProgressMonitor.UNKNOWN);
+							ReportLauncher.runReport(scriptable,
+									reportFilename, filename, format
+											.getBirtConstant(), monitor);
+							monitor.worked(1);
+							if (monitor.isCanceled())
+								return;
+
+						} catch (FogBugzClientException e) {
+							monitor.setCanceled(true);
+							e.printStackTrace();
+						} finally {
+							monitor.done();
+						}
+					}
+				});
+				if (!dialog.getProgressMonitor().isCanceled()) {
+					try {
+						PlatformUI.getWorkbench().getBrowserSupport()
+								.createBrowser("Timesheet").openURL(
+										new File(filename).toURL());
+					} catch (PartInitException e) {
+						e.printStackTrace();
+					} catch (MalformedURLException e) {
+						e.printStackTrace();
+					}
+				}
+			} catch (InvocationTargetException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+>>>>>>> .r185
+		}
+	}
+
+}

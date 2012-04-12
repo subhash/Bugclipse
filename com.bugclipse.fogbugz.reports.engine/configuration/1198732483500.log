@@ -1,0 +1,14 @@
+!SESSION 2007-12-27 10:44:44.984 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.5.0_06
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=en_US
+
+!ENTRY org.eclipse.update.configurator 2007-12-27 10:44:44.984
+!MESSAGE Could not install bundle update@plugins/org.eclipse.emf.common_2.2.1.v200702131851.jar   The activator org.eclipse.emf.common.CommonPlugin$Implementation for bundle org.eclipse.emf.common is invalid
+
+!ENTRY org.eclipse.update.configurator 2007-12-27 10:44:45.000
+!MESSAGE Could not install bundle update@plugins/org.eclipse.emf.ecore.xmi_2.2.2.v200702131851.jar   The activator org.eclipse.emf.ecore.xmi.XMIPlugin$Implementation for bundle org.eclipse.emf.ecore.xmi is invalid
+
+!ENTRY org.eclipse.update.configurator 2007-12-27 10:44:45.000
+!MESSAGE Could not install bundle update@plugins/org.eclipse.emf.ecore_2.2.2.v200702131851.jar   The activator org.eclipse.emf.ecore.plugin.EcorePlugin$Implementation for bundle org.eclipse.emf.ecore is invalid

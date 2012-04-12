@@ -1,0 +1,28 @@
+<binding xmlns="http://www.castor.org/SourceGenerator/Binding"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.castor.org/SourceGenerator/Binding C:\\Castor\\xsd\\binding.xsd"
+	defaultBinding="element">
+
+	<elementBinding name="/response/cases/case/ixBug">
+		<member name="ixBugElement" />
+	</elementBinding>
+
+	<elementBinding name="/response/events/event/ixBugEvent">
+		<member name="ixBugEventElement" />
+	</elementBinding>
+
+	<elementBinding name="/response/discussions/discussion">
+		<java-class name="DiscussionContained" />
+	</elementBinding>
+
+	<elementBinding name="/response/discussion/topic">
+		<java-class name="TopicContained" />
+	</elementBinding>
+
+	<elementBinding name="/response/discussion/topic/post">
+		<java-class name="PostContained" />
+	</elementBinding>
+
+
+
+</binding>

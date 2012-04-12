@@ -1,0 +1,437 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<response>
+	<version>2</version>
+	<minversion>1</minversion>
+	<url>api.asp?</url>
+
+	<token>24dsg34lok43un23</token>
+
+	<error code="1"></error>
+
+	<filters>
+		<filter type="builtin" sFilter="ez349">My Cases</filter>
+		<filter type="saved" sFilter="304">
+			Cases I should have closed months ago
+		</filter>
+		<filter type="shared" sFilter="98" status="current">
+			Customer Service Top 10
+		</filter>
+	</filters>
+
+	<description>
+		All open cases in SnooDog with the status of Active that must be
+		fixed for SnooDog Beta 1: 1/1/2007
+	</description>
+
+	<sFilter>
+		<![CDATA[inbox]]>
+	</sFilter>
+
+	<cases count="1">
+		<case ixBug="123"
+			operations="edit,assign,resolve,reactivate,close,reopen,reply,forward,email,move,spam,remind">
+			<ixBug>123</ixBug>
+			<fOpen>true</fOpen>
+			<sTitle>Duck, Duck... but No Goose!</sTitle>
+			<sLatestTextSummary>
+				I searched the docs, but no goose!
+			</sLatestTextSummary>
+			<ixBugEventLatestText>1151</ixBugEventLatestText>
+			<ixProject>22</ixProject>
+			<sProject>The Farm</sProject>
+			<ixArea>35</ixArea>
+			<sArea>Pond</sArea>
+			<ixGroup>6</ixGroup>
+			<ixPersonAssignedTo>1</ixPersonAssignedTo>
+			<sPersonAssignedTo>Old MacDonald</sPersonAssignedTo>
+			<sEmailAssignedTo>
+				grandpa@oldmacdonald.com
+			</sEmailAssignedTo>
+			<ixPersonOpenedBy>2</ixPersonOpenedBy>
+			<ixPersonResolvedBy>2</ixPersonResolvedBy>
+			<ixPersonClosedBy></ixPersonClosedBy>
+			<ixPersonLastEditedBy>0</ixPersonLastEditedBy>
+			<ixStatus>2</ixStatus>
+			<sStatus>Geschlossen (Fixed)</sStatus>
+			<ixPriority>3</ixPriority>
+			<sPriority>Must Fix</sPriority>
+			<ixFixFor>3</ixFixFor>
+			<sFixFor>Test</sFixFor>
+			<dtFixFor>2007-05-06T22:47:59Z</dtFixFor>
+			<sVersion></sVersion>
+			<sComputer></sComputer>
+			<hrsOrigEst>0</hrsOrigEst>
+			<hrsCurrEst>0</hrsCurrEst>
+			<hrsElapsed>0</hrsElapsed>
+			<c>0</c>
+			<sCustomerEmail></sCustomerEmail>
+			<ixMailbox>0</ixMailbox>
+			<ixCategory>1</ixCategory>
+			<sCategory>Feature</sCategory>
+			<dtOpened>2007-05-06T22:47:59Z</dtOpened>
+			<dtResolved>2007-05-06T22:47:59Z</dtResolved>
+			<dtClosed>2007-05-06T22:47:59Z</dtClosed>
+			<ixBugEventLatest>1151</ixBugEventLatest>
+			<dtLastUpdated>2007-05-06T22:47:59Z</dtLastUpdated>
+			<fReplied>false</fReplied>
+			<fForwarded>false</fForwarded>
+			<sTicket></sTicket>
+			<ixDiscussTopic>0</ixDiscussTopic>
+			<dtDue></dtDue>
+			<sReleaseNotes></sReleaseNotes>
+			<ixBugEventLastView>1151</ixBugEventLastView>
+			<dtLastView>2007-05-06T22:47:59Z</dtLastView>
+			<ixRelatedBugs>345,267,2920</ixRelatedBugs>
+			<sScoutDescription>Main.cpp:165</sScoutDescription>
+			<sScoutMessage>
+				Please contact us or visit our knowledge base to
+				resolve.
+			</sScoutMessage>
+			<fScoutStopReporting>false</fScoutStopReporting>
+			<fSubscribed>true</fSubscribed>
+			<events>
+				<event ixBugEvent="174" ixBug="13">
+
+					<ixBugEvent>174</ixBugEvent>
+					<evt>4</evt>
+					<sVerb>Assigned to Captain Caveman</sVerb>
+					<ixPerson>3</ixPerson>
+					<sPerson>Mikey</sPerson>
+					<dt>2007-05-06T22:47:59Z</dt>
+					<s>Up up and away!</s>
+					<bEmail>false</bEmail>
+					<bExternal>false</bExternal>
+					<sChanges>
+						Project changed from 'Inbox' to 'Cave'.
+					</sChanges>
+					<evtDescription>
+						Captain Caveman von Mikey zugewiesen
+					</evtDescription>
+					<rgAttachments>
+						<attachment>
+							<sFileName>Test Word.doc</sFileName>
+							<sURL>
+								default.asp?pg=pgDownload&amp;pgType=pgAttachment&amp;ixBugEvent=756&amp;sPart=2&amp;sTicket=&amp;sFileName=Test%20Word.doc
+							</sURL>
+						</attachment>
+					</rgAttachments>
+					<sFrom>"JJ Walker" &lt;jj @ dynomite.org&gt;</sFrom>
+					<sTo>good@times.org</sTo>
+					<sCC></sCC>
+					<sBCC></sBCC>
+					<sReplyTo></sReplyTo>
+					<sSubject></sSubject>
+					<sDate>5 Jun 07 21:07:54 GMT</sDate>
+					<sBodyText></sBodyText>
+					<sBodyHTML></sBodyHTML>
+				</event>
+			</events>
+		</case>
+	</cases>
+
+	<events>
+		<event ixBugEvent="174" ixBug="13">
+
+			<ixBugEvent>174</ixBugEvent>
+			<evt>4</evt>
+			<sVerb>Assigned to Captain Caveman</sVerb>
+			<ixPerson>3</ixPerson>
+			<sPerson>Mikey</sPerson>
+			<dt>2007-05-06T22:47:59Z</dt>
+			<s>Up up and away!</s>
+			<bEmail>false</bEmail>
+			<bExternal>false</bExternal>
+			<sChanges>Project changed from 'Inbox' to 'Cave'.</sChanges>
+			<evtDescription>
+				Captain Caveman von Mikey zugewiesen
+			</evtDescription>
+			<rgAttachments>
+				<attachment>
+					<sFileName>Test Word.doc</sFileName>
+					<sURL>
+						default.asp?pg=pgDownload&amp;pgType=pgAttachment&amp;ixBugEvent=756&amp;sPart=2&amp;sTicket=&amp;sFileName=Test%20Word.doc
+					</sURL>
+				</attachment>
+			</rgAttachments>
+			<sFrom>"JJ Walker" &lt;jj @ dynomite.org&gt;</sFrom>
+			<sTo>good@times.org</sTo>
+			<sCC></sCC>
+			<sBCC></sBCC>
+			<sReplyTo></sReplyTo>
+			<sSubject></sSubject>
+			<sDate>5 Jun 07 21:07:54 GMT</sDate>
+			<sBodyText></sBodyText>
+			<sBodyHTML></sBodyHTML>
+		</event>
+	</events>
+
+	<projects>
+		<project>
+			<ixProject>68</ixProject>
+			<sProject>The Farm</sProject>
+			<ixPersonOwner>6</ixPersonOwner>
+			<sPersonOwner>Old MacDonald</sPersonOwner>
+			<sEmail>grandpa@oldmacdonald.com</sEmail>
+			<sPhone>555-294-4778</sPhone>
+			<fInbox>false</fInbox>
+			<iType>1</iType>
+			<ixGroup>1</ixGroup>
+			<sGroup>Internal</sGroup>
+		</project>
+	</projects>
+
+
+
+	<areas>
+		<area>
+			<ixArea>53</ixArea>
+			<sArea>Bug</sArea>
+			<ixProject>23</ixProject>
+			<sProject>Antioch, CA</sProject>
+			<ixPersonOwner></ixPersonOwner>
+			<sPersonOwner></sPersonOwner>
+			<nType>0</nType>
+			<cDoc>0</cDoc>
+		</area>
+	</areas>
+
+
+	<fixfors>
+		<fixfor>
+			<ixFixFor>2</ixFixFor>
+			<sFixFor>2005.1</sFixFor>
+			<fDeleted>0</fDeleted>
+			<dt>2005-12-05T00:00:00Z</dt>
+			<ixProject>5</ixProject>
+			<sProject>New York City</sProject>
+		</fixfor>
+	</fixfors>
+
+
+	<priorities>
+		<priority>
+			<ixPriority>1</ixPriority>
+			<sPriority>Very Urgent</sPriority>
+		</priority>
+		<priority>
+			<ixPriority>2</ixPriority>
+			<sPriority>Urgent</sPriority>
+		</priority>
+		<priority>
+			<ixPriority>2</ixPriority>
+			<sPriority>Very Urgent</sPriority>
+		</priority>
+		<priority>
+			<ixPriority>2</ixPriority>
+			<sPriority>Urgent</sPriority>
+		</priority>
+	</priorities>
+
+
+	<categories>
+		<category>
+			<ixCategory>1</ixCategory>
+			<sCategory>Bug</sCategory>
+			<sPlural>Bugs</sPlural>
+			<ixStatusDefault>2</ixStatusDefault>
+			<fIsScheduleItem>false</fIsScheduleItem>
+		</category>
+		<category>
+			<ixCategory>2</ixCategory>
+			<sCategory>Feature</sCategory>
+			<sPlural>Features</sPlural>
+			<ixStatusDefault>8</ixStatusDefault>
+			<fIsScheduleItem>false</fIsScheduleItem>
+		</category>
+	</categories>
+
+	<statuses>
+		<status>
+			<ixStatus>2</ixStatus>
+			<sStatus>
+				<![CDATA[Resolved (Fixed)]]>
+			</sStatus>
+			<ixCategory>1</ixCategory>
+		</status>
+		<status>
+			<ixStatus>3</ixStatus>
+			<sStatus>
+				<![CDATA[Resolved (Not Reproducible)]]>
+			</sStatus>
+			<ixCategory>1</ixCategory>
+		</status>
+		<status>
+			<ixStatus>4</ixStatus>
+			<sStatus>
+				<![CDATA[Resolved (Duplicate)]]>
+			</sStatus>
+			<ixCategory>-1</ixCategory>
+		</status>
+	</statuses>
+
+	<workingSchedule>
+		<ixPerson>2</ixPerson>
+		<nHoursPerDay>8</nHoursPerDay>
+		<nWorkdayStarts>9</nWorkdayStarts>
+		<nWorkdayEnds>17</nWorkdayEnds>
+		<fHasLunch>true</fHasLunch>
+		<nLunchStarts>12</nLunchStarts>
+		<hrsLunchLength>0.5</hrsLunchLength>
+		<dtLastUpdated>2007-05-06T22:39:31Z</dtLastUpdated>
+		<rgWorkDays>
+			<sunday>false</sunday>
+			<monday>true</monday>
+			<tuesday>true</tuesday>
+			<wednesday>true</wednesday>
+			<thursday>true</thursday>
+			<friday>true</friday>
+			<saturday>false</saturday>
+		</rgWorkDays>
+	</workingSchedule>
+
+
+	<intervals>
+		<interval>
+			<ixBug>2</ixBug>
+			<ixInterval>8</ixInterval>
+			<dtStart>9</dtStart>
+			<dtEnd>17</dtEnd>
+			<sTitle>1</sTitle>
+			<ixPerson>12</ixPerson>
+		</interval>
+	</intervals>
+
+
+	<people>
+		<person>
+			<ixPerson>11</ixPerson>
+			<sFullName>Old MacDonald</sFullName>
+			<sEmail>grandpa@oldmacdonald.com</sEmail>
+			<sPhone></sPhone>
+			<fAdministrator>false</fAdministrator>
+			<fCommunity>false</fCommunity>
+			<fVirtual>false</fVirtual>
+			<fDeleted>false</fDeleted>
+			<fNotify>true</fNotify>
+			<sHomepage></sHomepage>
+			<sLocale>en-us</sLocale>
+			<sLanguage>en-us</sLanguage>
+			<sTimeZoneKey>Eastern Standard Time</sTimeZoneKey>
+			<fExpert>false</fExpert>
+		</person>
+		<!-- <person>Fred Astaire</person>
+			<person>John Hancock</person> -->
+	</people>
+
+	<person>
+		<ixPerson>11</ixPerson>
+		<sFullName>Old MacDonald</sFullName>
+		<sEmail>grandpa@oldmacdonald.com</sEmail>
+		<sPhone></sPhone>
+		<fAdministrator>false</fAdministrator>
+		<fCommunity>false</fCommunity>
+		<fVirtual>false</fVirtual>
+		<fDeleted>false</fDeleted>
+		<fNotify>true</fNotify>
+		<sHomepage></sHomepage>
+		<sLocale>en-us</sLocale>
+		<sLanguage>en-us</sLanguage>
+		<sTimeZoneKey>Eastern Standard Time</sTimeZoneKey>
+		<fExpert>false</fExpert>
+	</person>
+
+
+	<topic>
+		<post>
+			<ixDiscussTopic>2</ixDiscussTopic>
+			<ixDiscussTopicParent>0</ixDiscussTopicParent>
+			<sHeadline>test headline</sHeadline>
+			<sFullName>fogtest</sFullName>
+			<sURL />
+			<dt>2007-06-25T20:24:50Z</dt>
+			<sPost>message</sPost>
+			<fModerator>true</fModerator>
+			<fAuthorized>true</fAuthorized>
+		</post>
+		<post>
+			<ixDiscussTopic>3</ixDiscussTopic>
+			<ixDiscussTopicParent>2</ixDiscussTopicParent>
+			<sHeadline>test headline</sHeadline>
+			<sFullName>fogtest</sFullName>
+			<sURL />
+			<dt>2007-06-25T20:39:30Z</dt>
+			<sPost>another message</sPost>
+			<fModerator>true</fModerator>
+			<fAuthorized>true</fAuthorized>
+		</post>
+	</topic>
+
+
+	<discussion>
+		<sFullName>test</sFullName>
+		<sURL>http://localhost/fb/?test</sURL>
+		<sTagLineHTML>test</sTagLineHTML>
+		<topic>
+			<post>
+				<ixDiscussTopic>4</ixDiscussTopic>
+				<ixDiscussTopicParent>0</ixDiscussTopicParent>
+				<sHeadline>a second topic</sHeadline>
+				<sFullName>fogtest</sFullName>
+				<sURL />
+				<dt>2007-06-25T20:39:47Z</dt>
+				<sPost>new topic message</sPost>
+				<fModerator>true</fModerator>
+				<fAuthorized>true</fAuthorized>
+			</post>
+		</topic>
+		<topic>
+			<post></post>
+		</topic>
+	</discussion>
+
+
+	<discussions>
+		<discussion>
+			<sFullName>test</sFullName>
+			<sURL>http://localhost/fb/?test</sURL>
+			<sTagLineHTML>test</sTagLineHTML>
+			<ixDiscussGroup>1</ixDiscussGroup>
+		</discussion>
+	</discussions>
+
+
+	<checkins>
+		<checkin>
+			<ixCVS>28444</ixCVS>
+			<ixBug>403416</ixBug>
+			<sFile>trunk/fogcreek/FogBugz/Website/snippet.js</sFile>
+			<sPrev>0</sPrev>
+			<sNew>22878</sNew>
+			<sRepo />
+		</checkin>
+	</checkins>
+
+
+	<mailboxes>
+		<mailbox>
+			<ixMailbox>1</ixMailbox>
+			<sEmail>
+				"customer support" &lt;customer@company.com&gt;
+			</sEmail>
+			<sEmailUser>
+				"Jonas Jalopy" &lt;customer@company.com&gt;
+			</sEmailUser>
+			<sTemplate>Sincerely, Customer Service</sTemplate>
+		</mailbox>
+	</mailboxes>
+
+
+	<settings>
+		<sTimeZoneKey>Eastern Standard Time</sTimeZoneKey>
+		<nTimeZoneOffset>-14400</nTimeZoneOffset>
+		<cols>
+			sCategory,ixBug,sLatestTextSummary,sStatus,ixPersonOpenedBy,sPriority
+		</cols>
+	</settings>
+
+</response>

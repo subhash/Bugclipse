@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?NLS TYPE="org.eclipse.help.toc"?>
+<toc label="Advanced Features" topic="html/advancedfeatures/index.html">
+   <topic href="html/advancedfeatures/Tracking time for a task.html" label="Tracking time for a task"/>
+   <topic href="html/advancedfeatures/Context attachment.html" label="Context attachment"/>
+   <topic href="html/advancedfeatures/Timesheet.html" label="Timesheet"/>
+   <topic href="html/advancedfeatures/Case Report.html" label="Case Report"/>
+   <topic href="html/advancedfeatures/Offline Task Management.html" label="Offline Task Management"/>
+   <topic href="html/advancedfeatures/Open With Browser.html" label="Open With Browser"/>
+</toc>
